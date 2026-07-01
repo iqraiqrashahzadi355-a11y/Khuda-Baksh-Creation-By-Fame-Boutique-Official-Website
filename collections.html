@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Collections | Khuda Baksh Creation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Montserrat:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#e4e4cc",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f3f0ef",
+                        "background": "#fcf9f8",
+                        "surface-bright": "#fcf9f8",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-secondary-container": "#745c00",
+                        "on-error": "#ffffff",
+                        "surface-container": "#f0eded",
+                        "tertiary-fixed-dim": "#c8c8b0",
+                        "surface-variant": "#e5e2e1",
+                        "surface": "#fcf9f8",
+                        "secondary-container": "#fed65b",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1c1b1b",
+                        "primary": "#665c5e",
+                        "surface-container-high": "#eae7e7",
+                        "secondary-fixed-dim": "#e9c349",
+                        "primary-fixed-dim": "#d1c3c5",
+                        "on-surface": "#1c1b1b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#4d4546",
+                        "surface-dim": "#dcd9d9",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f6f3f2",
+                        "primary-fixed": "#eedfe1",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#ebebd2",
+                        "on-secondary-fixed": "#241a00",
+                        "secondary": "#735c00",
+                        "on-tertiary-container": "#696a56",
+                        "inverse-surface": "#313030",
+                        "on-tertiary-fixed": "#1b1d0e",
+                        "tertiary": "#5e604d",
+                        "inverse-primary": "#d1c3c5",
+                        "primary-container": "#f5e6e8",
+                        "on-primary-fixed": "#211a1b",
+                        "outline": "#7f7576",
+                        "surface-tint": "#665c5e",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#474836",
+                        "on-primary-container": "#716668",
+                        "secondary-fixed": "#ffe088",
+                        "outline-variant": "#d0c3c5",
+                        "on-primary-fixed-variant": "#4e4446",
+                        "surface-container-highest": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "48px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "80px",
+                        "stack-sm": "8px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "stack-md": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Playfair Display"],
+                        "body-lg": ["Montserrat"],
+                        "display-lg": ["Playfair Display"],
+                        "label-sm": ["Montserrat"],
+                        "body-md": ["Montserrat"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ambient-shadow {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+        .silk-transition {
+            transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        #product-grid {
+            min-height: 400px;
+        }
+        .filter-btn.active, .price-filter-btn.active {
+            background-color: theme('colors.secondary');
+            color: theme('colors.on-secondary');
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.surface-container-low');
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant');
+            border-radius: 10px;
+        }
+        .sticky-controls {
+            top: 72px;
+        }
+        @media (min-width: 768px) {
+            .sticky-controls {
+                top: 112px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-secondary-container">
+<header class="sticky top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant/30 dark:border-outline/20 shadow-sm">
+<nav class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<button class="text-secondary dark:text-secondary-fixed-dim" onclick="toggleDrawer()">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<a class="block" href="index.html">
+<img alt="Khuda Baksh Creation" class="h-12 md:h-16 w-auto object-contain" src="images/logo.png"/>
+</a>
+<div class="flex items-center gap-4">
+<button class="text-secondary dark:text-secondary-fixed-dim" onclick="window.open('https://wa.me/923026825777', '_blank')">
+<span class="material-symbols-outlined">chat</span>
+</button>
+</div>
+</nav>
+<div class="hidden md:flex justify-center gap-8 py-2 border-t border-outline-variant/10">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary silk-transition" href="index.html">HOME</a>
+<a class="font-label-sm text-label-sm text-secondary border-b-2 border-secondary silk-transition" href="collections.html">COLLECTIONS</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary silk-transition" href="collections.html#unstitched">UNSTITCHED</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary silk-transition" href="collections.html#stitched">STITCHED</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary silk-transition" href="collections.html#bridal">BRIDAL</a>
+</div>
+</header>
+<div class="fixed inset-y-0 left-0 z-[60] flex flex-col bg-surface dark:bg-surface-dim h-full w-80 rounded-r-xl shadow-xl -translate-x-full transition-transform duration-300" id="drawer">
+<div class="p-6 flex justify-between items-center border-b border-outline-variant/20">
+<h2 class="font-headline-sm text-headline-sm text-secondary">Fame Boutique</h2>
+<button class="text-on-surface-variant" onclick="toggleDrawer()"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="flex flex-col py-4">
+<a class="text-on-surface-variant dark:text-surface-variant mx-2 my-1 px-4 py-3 flex items-center gap-4 hover:bg-primary-container/50" href="index.html"><span class="material-symbols-outlined">home</span> Home</a>
+<a class="bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4" href="collections.html"><span class="material-symbols-outlined">style</span> Collections</a>
+<a class="text-on-surface-variant dark:text-surface-variant mx-2 my-1 px-4 py-3 flex items-center gap-4 hover:bg-primary-container/50" href="custom-stitching.html"><span class="material-symbols-outlined">content_cut</span> Custom Stitching</a>
+<a class="text-on-surface-variant dark:text-surface-variant mx-2 my-1 px-4 py-3 flex items-center gap-4 hover:bg-primary-container/50" href="about.html"><span class="material-symbols-outlined">auto_awesome</span> About Us</a>
+<a class="text-on-surface-variant dark:text-surface-variant mx-2 my-1 px-4 py-3 flex items-center gap-4 hover:bg-primary-container/50" href="contact.html"><span class="material-symbols-outlined">call</span> Contact</a>
+</div>
+</div>
+<div class="fixed inset-0 bg-black/40 z-[55] hidden opacity-0 transition-opacity duration-300" id="overlay" onclick="toggleDrawer()"></div>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+<section class="mb-stack-lg text-center max-w-2xl mx-auto" id="collections-top">
+<h1 class="font-display-lg text-display-lg md:text-display-lg text-primary mb-4">Our Curated Collections</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            Discover the art of Multani craftsmanship blended with modern elegance. From the intricate details of our Bridal wear to the effortless grace of Casuals.
+        </p>
+</section>
+<!-- Search and Controls -->
+<div class="sticky sticky-controls z-40 bg-background/90 backdrop-blur-sm py-4 border-b border-outline-variant/10">
+<div class="flex flex-col gap-4">
+<!-- Search Bar -->
+<div class="relative max-w-xl mx-auto w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-12 pr-12 py-3 bg-surface border border-outline-variant rounded-full focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all" id="product-search" oninput="handleSearch()" placeholder="Search by design or fabric..." type="text"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-secondary hidden" id="clear-search" onclick="clearSearch()">
+<span class="material-symbols-outlined">cancel</span>
+</button>
+</div>
+<!-- Price Filters -->
+<div class="flex flex-wrap justify-center gap-2">
+<span class="font-label-sm text-on-surface-variant self-center mr-2">BUDGET:</span>
+<button class="price-filter-btn active px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant font-label-sm silk-transition text-[11px]" data-price="all" onclick="applyPriceFilter('all')">ANY</button>
+<button class="price-filter-btn px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant font-label-sm silk-transition text-[11px]" data-price="budget" onclick="applyPriceFilter('budget')">BUDGET (&lt;10k)</button>
+<button class="price-filter-btn px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant font-label-sm silk-transition text-[11px]" data-price="mid" onclick="applyPriceFilter('mid')">MID (10k-50k)</button>
+<button class="price-filter-btn px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant font-label-sm silk-transition text-[11px]" data-price="premium" onclick="applyPriceFilter('premium')">PREMIUM (50k+)</button>
+</div>
+<!-- Category Filter Tabs -->
+<div class="flex flex-wrap justify-center gap-3">
+<button class="filter-btn active px-6 py-2 rounded-full border border-secondary text-secondary font-label-sm silk-transition hover:bg-secondary hover:text-white" data-filter="all" onclick="applyCategoryFilter('all')">ALL</button>
+<button class="filter-btn px-6 py-2 rounded-full border border-secondary text-secondary font-label-sm silk-transition hover:bg-secondary hover:text-white" data-filter="stitched" onclick="applyCategoryFilter('stitched')">STITCHED</button>
+<button class="filter-btn px-6 py-2 rounded-full border border-secondary text-secondary font-label-sm silk-transition hover:bg-secondary hover:text-white" data-filter="unstitched" onclick="applyCategoryFilter('unstitched')">UNSTITCHED</button>
+<button class="filter-btn px-6 py-2 rounded-full border border-secondary text-secondary font-label-sm silk-transition hover:bg-secondary hover:text-white" data-filter="fancy" onclick="applyCategoryFilter('fancy')">FANCY</button>
+<button class="filter-btn px-6 py-2 rounded-full border border-secondary text-secondary font-label-sm silk-transition hover:bg-secondary hover:text-white" data-filter="casual" onclick="applyCategoryFilter('casual')">CASUAL</button>
+<button class="filter-btn px-6 py-2 rounded-full border border-secondary text-secondary font-label-sm silk-transition hover:bg-secondary hover:text-white" data-filter="bridal" onclick="applyCategoryFilter('bridal')">BRIDAL</button>
+</div>
+<!-- Meta Controls -->
+<div class="flex justify-between items-center px-4 max-w-container-max mx-auto w-full">
+<p class="font-label-sm text-on-surface-variant" id="results-counter">Showing 0 results</p>
+<button class="flex items-center gap-2 font-label-sm text-secondary hover:underline" onclick="toggleSizeGuide()">
+<span class="material-symbols-outlined text-lg">straighten</span> SIZE GUIDE
+                </button>
+</div>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-gutter mt-8" id="product-grid">
+<!-- Products will be injected here via JS -->
+</div>
+<!-- Load More -->
+<div class="mt-stack-lg text-center" id="load-more-container">
+<button class="px-8 py-3 bg-primary-container text-primary font-label-sm rounded-full hover:bg-primary hover:text-white silk-transition" onclick="loadMore()">LOAD MORE DESIGNS</button>
+</div>
+<!-- Custom Design CTA -->
+<section class="mt-stack-lg bg-surface-container-high rounded-2xl p-10 text-center border border-outline-variant/30 ambient-shadow">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Want Your Own Custom Design?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-xl mx-auto">
+            Bring your dream outfit to life with our expert artisans. From fabric selection to intricate handwork, we craft it exactly as you envision.
+        </p>
+<a class="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] text-white rounded-full font-label-sm hover:scale-105 silk-transition shadow-lg" href="https://wa.me/923026825777?text=Hi%2C%20I%20want%20to%20discuss%20a%20custom%20design%20for%20my%20own%20outfit" target="_blank">
+<span class="material-symbols-outlined">chat</span>
+            CONTACT US FOR CUSTOM DESIGN
+        </a>
+</section>
+</main>
+<footer class="bg-surface-container-low dark:bg-surface-container-lowest w-full pt-stack-lg pb-stack-md border-t border-outline-variant/10 mt-stack-lg">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col gap-4">
+<img alt="Logo" class="h-10 w-auto object-contain self-start" src="images/logo.png"/>
+<p class="font-body-md text-body-md text-on-surface-variant">Multan's leading name in luxury craftsmanship and timeless fashion since 2024.</p>
+</div>
+<div>
+<h5 class="font-label-sm text-label-sm text-secondary mb-4">SHOP BY</h5>
+<ul class="flex flex-col gap-2">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary underline silk-transition" href="collections.html#stitched">Stitched</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary underline silk-transition" href="collections.html#unstitched">Unstitched</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary underline silk-transition" href="collections.html#bridal">Bridal</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-sm text-label-sm text-secondary mb-4">SERVICES</h5>
+<ul class="flex flex-col gap-2">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary underline silk-transition" href="custom-stitching.html">Custom Stitching</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary underline silk-transition" href="about.html">About Us</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary underline silk-transition" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-sm text-label-sm text-secondary mb-4">CONNECT</h5>
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-secondary" href="index.html"><span class="material-symbols-outlined">alternate_email</span></a>
+<a class="text-on-surface-variant hover:text-secondary" href="index.html"><span class="material-symbols-outlined">share</span></a>
+<a class="text-on-surface-variant hover:text-secondary" href="index.html"><span class="material-symbols-outlined">location_on</span></a>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-stack-lg pt-4 border-t border-outline-variant/10 text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant/80">© 2024 Khuda Baksh Creation By Fame Boutique. All Rights Reserved.</p>
+</div>
+</footer>
+<!-- Size Guide Modal -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center hidden" id="size-guide-modal">
+<div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="toggleSizeGuide()"></div>
+<div class="bg-surface w-full max-w-2xl mx-4 rounded-2xl overflow-hidden shadow-2xl relative z-10 silk-transition animate-in fade-in zoom-in duration-300">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-surface-container">
+<h3 class="font-headline-sm text-secondary">Pakistani Women's Size Guide</h3>
+<button class="text-on-surface-variant hover:text-primary" onclick="toggleSizeGuide()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6 overflow-x-auto">
+<table class="w-full text-left border-collapse font-body-md">
+<thead>
+<tr class="bg-secondary-container/30">
+<th class="p-3 border border-outline-variant font-bold">Size (Inches)</th>
+<th class="p-3 border border-outline-variant">Small</th>
+<th class="p-3 border border-outline-variant">Medium</th>
+<th class="p-3 border border-outline-variant">Large</th>
+<th class="p-3 border border-outline-variant">X-Large</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="p-3 border border-outline-variant font-bold">Chest</td>
+<td class="p-3 border border-outline-variant">19"</td>
+<td class="p-3 border border-outline-variant">20.5"</td>
+<td class="p-3 border border-outline-variant">22"</td>
+<td class="p-3 border border-outline-variant">23.5"</td>
+</tr>
+<tr class="bg-surface-container-low">
+<td class="p-3 border border-outline-variant font-bold">Shoulder</td>
+<td class="p-3 border border-outline-variant">14"</td>
+<td class="p-3 border border-outline-variant">15"</td>
+<td class="p-3 border border-outline-variant">15.5"</td>
+<td class="p-3 border border-outline-variant">16"</td>
+</tr>
+<tr>
+<td class="p-3 border border-outline-variant font-bold">Waist</td>
+<td class="p-3 border border-outline-variant">17"</td>
+<td class="p-3 border border-outline-variant">19"</td>
+<td class="p-3 border border-outline-variant">21"</td>
+<td class="p-3 border border-outline-variant">22.5"</td>
+</tr>
+<tr class="bg-surface-container-low">
+<td class="p-3 border border-outline-variant font-bold">Hip</td>
+<td class="p-3 border border-outline-variant">20"</td>
+<td class="p-3 border border-outline-variant">22"</td>
+<td class="p-3 border border-outline-variant">24"</td>
+<td class="p-3 border border-outline-variant">26"</td>
+</tr>
+</tbody>
+</table>
+<div class="mt-6 p-4 bg-primary-container/30 rounded-xl border border-primary-container text-on-primary-container">
+<p class="font-label-sm mb-2">💡 CUSTOM MEASUREMENTS AVAILABLE</p>
+<p class="font-body-md text-sm mb-4">Need a custom fit? Send us your specific measurements for a perfect tailored outfit.</p>
+<button class="bg-[#25D366] text-white px-6 py-2 rounded-full font-label-sm flex items-center gap-2 shadow-sm" onclick="whatsappOrder('Size Guide Inquiry')">
+<span class="material-symbols-outlined text-sm">chat</span> SEND MEASUREMENTS
+                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Buttons -->
+<div class="fixed bottom-8 left-8 z-[100] flex flex-col gap-4">
+<button class="bg-surface text-secondary p-4 rounded-full shadow-2xl border border-outline-variant opacity-0 pointer-events-none silk-transition hover:bg-secondary-container" id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+<span class="material-symbols-outlined text-[32px]">arrow_upward</span>
+</button>
+</div>
+<a class="fixed bottom-8 right-8 z-[100] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 silk-transition animate-bounce" href="https://wa.me/923026825777" target="_blank">
+<span class="material-symbols-outlined text-[32px]">chat</span>
+</a>
+<script>
+    const categoryImages = {
+        stitched: ["images/stitched-1.jpg","images/stitched-2.jpg","images/stitched-3.jpg"],
+        unstitched: ["images/unstitched-1.jpg","images/unstitched-2.jpg","images/unstitched-3.jpg","images/unstitched-4.jpg"],
+        fancy: ["images/fancy-1.jpg","images/fancy-2.jpg","images/fancy-3.jpg"],
+        casual: ["images/casual-1.jpg","images/casual-2.jpg","images/casual-3.jpg","images/casual-4.jpg"],
+        bridal: ["images/bridal-1.jpg","images/bridal-2.jpg","images/bridal-3.jpg","images/bridal-4.jpg","images/bridal-5.jpg","images/bridal-6.jpg","images/bridal-7.jpg","images/bridal-8.jpg","images/bridal-9.jpg"]
+    };
+
+    const priceRanges = {
+        casual: { min: 2500, max: 6500 },
+        unstitched: { min: 3500, max: 9950 },
+        stitched: { min: 7500, max: 18000 },
+        fancy: { min: 12000, max: 35000 },
+        bridal: { min: 85000, max: 250000 }
+    };
+
+    const products = [];
+    const categories = ['stitched', 'unstitched', 'fancy', 'casual', 'bridal'];
+    const prefixNames = ['Multani Silk', 'Royal Velvet', 'Silk Route', 'Floral Bloom', 'Golden Zardosi', 'Midnight Star', 'Pastel Grace', 'Ivory Charm', 'Zari Work', 'Lawn Dream'];
+    const suffixNames = ['Couture', 'Ensemble', 'Lehenga', 'Suit', 'Collection', 'Heritage', 'Fabrics', 'Poshak', 'Angrakha'];
+
+    // Generate products with logic
+    categories.forEach(cat => {
+        for(let i=0; i<30; i++) {
+            const range = priceRanges[cat];
+            // Price Logic: Random multiple of 500 within range
+            let rawPrice = range.min + (Math.floor(Math.random() * ((range.max - range.min) / 500)) * 500);
+            
+            // Random Badges
+            const badgeRand = Math.random();
+            let badge = null;
+            if (badgeRand < 0.20) badge = { text: '🆕 New', class: 'bg-[#FFD700] text-black' }; // Gold
+            else if (badgeRand < 0.35) badge = { text: '🔥 Hot', class: 'bg-[#FF69B4] text-white' }; // Pink
+            else if (badgeRand < 0.45) badge = { text: '✨ Featured', class: 'bg-secondary text-white' };
+
+            const name = `${prefixNames[Math.floor(Math.random() * prefixNames.length)]} ${suffixNames[Math.floor(Math.random() * suffixNames.length)]} ${i+1}`;
+            
+            products.push({
+                id: `${cat}-${i}`,
+                name: name,
+                category: cat,
+                image: categoryImages[cat][i % categoryImages[cat].length],
+                price: rawPrice,
+                badge: badge
+            });
+        }
+    });
+
+    let currentCategory = 'all';
+    let currentPriceFilter = 'all';
+    let searchQuery = '';
+    let visibleCount = 16;
+
+    function getFilteredProducts() {
+        return products.filter(p => {
+            const matchesCat = currentCategory === 'all' || p.category === currentCategory;
+            const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
+            
+            let matchesPrice = true;
+            if (currentPriceFilter === 'budget') matchesPrice = p.price < 10000;
+            else if (currentPriceFilter === 'mid') matchesPrice = p.price >= 10000 && p.price <= 50000;
+            else if (currentPriceFilter === 'premium') matchesPrice = p.price > 50000;
+
+            return matchesCat && matchesSearch && matchesPrice;
+        });
+    }
+
+    function renderProducts() {
+        const grid = document.getElementById('product-grid');
+        const filtered = getFilteredProducts();
+        const displayed = filtered.slice(0, visibleCount);
+        
+        document.getElementById('results-counter').innerText = `Showing ${displayed.length} of ${filtered.length} results`;
+
+        if (filtered.length === 0) {
+            grid.innerHTML = `<div class="col-span-full py-20 text-center flex flex-col items-center gap-4">
+                <span class="material-symbols-outlined text-6xl text-outline-variant">inventory_2</span>
+                <p class="font-body-lg text-on-surface-variant">No products found matching your criteria.</p>
+                <button onclick="resetFilters()" class="text-secondary font-bold underline">Reset all filters</button>
+            </div>`;
+        } else {
+            grid.innerHTML = displayed.map(p => `
+                <div class="group silk-transition">
+                    <div class="relative aspect-[3/4] overflow-hidden rounded-xl bg-surface-container mb-4 ambient-shadow">
+                        <img src="${p.image}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover silk-transition group-hover:scale-110">
+                        ${p.badge ? `<span class="absolute top-3 left-3 ${p.badge.class} text-[10px] font-bold px-2 py-1 rounded-full shadow-sm z-10">${p.badge.text}</span>` : ''}
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 silk-transition flex items-center justify-center p-4">
+                            <button onclick="whatsappOrder('${p.name}')" class="bg-[#25D366] text-white px-4 py-2 rounded-full font-label-sm text-[10px] md:text-xs flex items-center gap-2 shadow-lg">
+                                <span class="material-symbols-outlined text-sm">chat</span> ORDER NOW
+                            </button>
+                        </div>
+                    </div>
+                    <div class="px-1">
+                        <h3 class="font-headline-sm text-[16px] md:text-body-lg text-primary truncate mb-0.5">${p.name}</h3>
+                        <p class="font-body-md text-xs text-on-surface-variant mb-1 uppercase tracking-widest">${p.category}</p>
+                        <p class="font-bold text-secondary mb-3">Rs. ${p.price.toLocaleString()}</p>
+                        <button onclick="whatsappOrder('${p.name}')" class="w-full py-2 border border-outline text-on-surface-variant rounded-full text-[12px] font-bold hover:bg-secondary hover:text-white hover:border-secondary silk-transition">
+                            WHATSAPP ENQUIRY
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        const loadMoreBtn = document.getElementById('load-more-container');
+        if (visibleCount >= filtered.length || filtered.length === 0) {
+            loadMoreBtn.classList.add('hidden');
+        } else {
+            loadMoreBtn.classList.remove('hidden');
+        }
+    }
+
+    function handleSearch() {
+        searchQuery = document.getElementById('product-search').value;
+        const clearBtn = document.getElementById('clear-search');
+        if (searchQuery.length > 0) clearBtn.classList.remove('hidden');
+        else clearBtn.classList.add('hidden');
+        
+        visibleCount = 16;
+        renderProducts();
+    }
+
+    function clearSearch() {
+        document.getElementById('product-search').value = '';
+        searchQuery = '';
+        document.getElementById('clear-search').classList.add('hidden');
+        renderProducts();
+    }
+
+    function applyCategoryFilter(filter) {
+        currentCategory = filter;
+        visibleCount = 16;
+        
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.filter === filter);
+        });
+
+        renderProducts();
+        window.location.hash = filter === 'all' ? '' : filter;
+    }
+
+    function applyPriceFilter(range) {
+        currentPriceFilter = range;
+        visibleCount = 16;
+        
+        document.querySelectorAll('.price-filter-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.price === range);
+        });
+
+        renderProducts();
+    }
+
+    function resetFilters() {
+        currentCategory = 'all';
+        currentPriceFilter = 'all';
+        searchQuery = '';
+        document.getElementById('product-search').value = '';
+        document.getElementById('clear-search').classList.add('hidden');
+        
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.filter === 'all'));
+        document.querySelectorAll('.price-filter-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.price === 'all'));
+        
+        renderProducts();
+    }
+
+    function loadMore() {
+        visibleCount += 16;
+        renderProducts();
+    }
+
+    function whatsappOrder(productName) {
+        const message = encodeURIComponent(`Hi, I'm interested in ${productName} from your Collections. Please share more details.`);
+        window.open(`https://wa.me/923026825777?text=${message}`, '_blank');
+    }
+
+    function toggleDrawer() {
+        const drawer = document.getElementById('drawer');
+        const overlay = document.getElementById('overlay');
+        const isOpen = drawer.style.transform === 'translateX(0px)';
+
+        if (isOpen) {
+            drawer.style.transform = 'translateX(-100%)';
+            overlay.classList.add('hidden');
+            overlay.classList.remove('opacity-100');
+        } else {
+            drawer.style.transform = 'translateX(0px)';
+            overlay.classList.remove('hidden');
+            setTimeout(() => overlay.classList.add('opacity-100'), 10);
+        }
+    }
+
+    function toggleSizeGuide() {
+        const modal = document.getElementById('size-guide-modal');
+        modal.classList.toggle('hidden');
+    }
+
+    // Scroll handlers
+    window.addEventListener('scroll', () => {
+        const btt = document.getElementById('back-to-top');
+        if (window.scrollY > 500) {
+            btt.classList.remove('opacity-0', 'pointer-events-none');
+        } else {
+            btt.classList.add('opacity-0', 'pointer-events-none');
+        }
+    });
+
+    // Init Logic
+    window.addEventListener('load', () => {
+        const hash = window.location.hash.substring(1).toLowerCase();
+        if (hash && categories.includes(hash)) {
+            applyCategoryFilter(hash);
+        } else {
+            renderProducts();
+        }
+    });
+
+    // Handle hash change
+    window.addEventListener('hashchange', () => {
+        const hash = window.location.hash.substring(1).toLowerCase();
+        if (hash && categories.includes(hash)) {
+            applyCategoryFilter(hash);
+        } else if (!hash) {
+            applyCategoryFilter('all');
+        }
+    });
+</script>
+</body></html>

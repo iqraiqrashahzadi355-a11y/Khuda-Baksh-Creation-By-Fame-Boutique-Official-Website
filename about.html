@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | Khuda Baksh Creation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Montserrat:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#241a00",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#716668",
+                    "primary-fixed-dim": "#d1c3c5",
+                    "on-surface-variant": "#4d4546",
+                    "on-tertiary-container": "#696a56",
+                    "on-secondary-container": "#745c00",
+                    "outline": "#7f7576",
+                    "on-tertiary-fixed-variant": "#474836",
+                    "tertiary": "#5e604d",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#ebebd2",
+                    "tertiary-fixed": "#e4e4cc",
+                    "secondary-fixed-dim": "#e9c349",
+                    "secondary-fixed": "#ffe088",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#f0eded",
+                    "on-surface": "#1c1b1b",
+                    "on-secondary-fixed-variant": "#574500",
+                    "surface-variant": "#e5e2e1",
+                    "on-tertiary-fixed": "#1b1d0e",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "secondary": "#735c00",
+                    "secondary-container": "#fed65b",
+                    "inverse-surface": "#313030",
+                    "on-background": "#1c1b1b",
+                    "surface-dim": "#dcd9d9",
+                    "primary-fixed": "#eedfe1",
+                    "primary-container": "#f5e6e8",
+                    "surface-tint": "#665c5e",
+                    "surface-container-high": "#eae7e7",
+                    "on-primary-fixed": "#211a1b",
+                    "outline-variant": "#d0c3c5",
+                    "inverse-primary": "#d1c3c5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#4e4446",
+                    "background": "#fcf9f8",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-low": "#f6f3f2",
+                    "tertiary-fixed-dim": "#c8c8b0",
+                    "primary": "#665c5e",
+                    "surface-container-highest": "#e5e2e1",
+                    "surface": "#fcf9f8",
+                    "inverse-on-surface": "#f3f0ef",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#fcf9f8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "margin-desktop": "80px",
+                    "stack-lg": "48px",
+                    "stack-md": "24px",
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Playfair Display"],
+                    "body-md": ["Montserrat"],
+                    "label-sm": ["Montserrat"],
+                    "display-lg": ["Playfair Display"],
+                    "headline-sm": ["Playfair Display"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "body-lg": ["Montserrat"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .ambient-shadow {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+        .silk-transition {
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .active-nav-link {
+            border-bottom: 2px solid #735c00;
+            color: #735c00;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .gold-button-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+        }
+        body {
+            background-color: #fcf9f8;
+            color: #1c1b1b;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+<!-- Top Navigation -->
+<nav class="sticky top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-secondary" id="menuBtn">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="hidden md:flex gap-8 items-center font-label-sm text-label-sm text-on-surface-variant">
+<a class="hover:text-secondary silk-transition" href="index.html">HOME</a>
+<a class="hover:text-secondary silk-transition" href="collections.html">COLLECTIONS</a>
+</div>
+</div>
+<div class="w-48 md:w-64">
+<a href="index.html">
+<img alt="Khuda Baksh Creation Logo" class="h-12 w-auto" src="images/logo.png"/>
+</a>
+</div>
+<div class="flex items-center gap-8">
+<div class="hidden md:flex gap-8 items-center font-label-sm text-label-sm text-on-surface-variant">
+<a class="text-secondary border-b-2 border-secondary silk-transition" href="about.html">ABOUT US</a>
+<a class="hover:text-secondary silk-transition" href="contact.html">CONTACT</a>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary cursor-pointer">search</span>
+<a class="flex items-center" href="https://wa.me/923026825777?text=Hello%20Khuda%20Baksh%20Creation%2C%20I%20have%20an%20inquiry." target="_blank">
+<span class="material-symbols-outlined text-secondary cursor-pointer">chat</span>
+</a>
+</div>
+</div>
+</div>
+</nav>
+<!-- Side Drawer (Mobile) -->
+<div class="fixed inset-y-0 left-0 z-[60] flex flex-col h-full w-80 bg-surface shadow-xl -translate-x-full silk-transition overflow-y-auto" id="drawer">
+<div class="p-8 border-b border-outline-variant">
+<img alt="Logo" class="h-10 w-auto mb-2" src="images/logo.png"/>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-2">Crafting Elegance Since 1994</p>
+</div>
+<div class="flex flex-col py-4">
+<a class="text-on-surface-variant px-8 py-4 flex items-center gap-4 hover:bg-primary-container/50" href="index.html"><span class="material-symbols-outlined">home</span> Home</a>
+<a class="text-on-surface-variant px-8 py-4 flex items-center gap-4 hover:bg-primary-container/50" href="collections.html"><span class="material-symbols-outlined">style</span> Collections</a>
+<a class="text-on-surface-variant px-8 py-4 flex items-center gap-4 hover:bg-primary-container/50" href="custom-stitching.html"><span class="material-symbols-outlined">content_cut</span> Custom Stitching</a>
+<a class="bg-secondary-container text-on-secondary-container rounded-full mx-4 my-1 px-4 py-3 flex items-center gap-4" href="about.html"><span class="material-symbols-outlined">auto_awesome</span> About Us</a>
+<a class="text-on-surface-variant px-8 py-4 flex items-center gap-4 hover:bg-primary-container/50" href="testimonials.html"><span class="material-symbols-outlined">format_quote</span> Testimonials</a>
+<a class="text-on-surface-variant px-8 py-4 flex items-center gap-4 hover:bg-primary-container/50" href="contact.html"><span class="material-symbols-outlined">call</span> Contact</a>
+</div>
+</div>
+<div class="fixed inset-0 bg-black/20 z-[55] hidden silk-transition backdrop-blur-sm" id="overlay"></div>
+<main>
+<!-- Hero Section -->
+<section class="relative h-[60vh] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Luxury Boutique Interior" class="w-full h-full object-cover brightness-75" src="images/casual-2.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface/90"></div>
+</div>
+<div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-4">Our Heritage. Your Elegance.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto italic">"A legacy of Multani craftsmanship reimagined for the contemporary woman."</p>
+</div>
+</section>
+<!-- Our Story Section -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-7 space-y-stack-md">
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">The Story of Khuda Baksh Creation</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Multan's Timeless Artistry meets Fame Boutique's Vision</h2>
+<div class="space-y-6 text-on-surface-variant leading-relaxed">
+<p>Born in the heart of Multan, Khuda Baksh Creation has always been more than just a fashion label. It is a preservation of heritage. Our journey began with a simple mission: to bring the intricate, hand-woven beauty of Southern Punjab to the global stage.</p>
+<p>Partnering with Fame Boutique, we have scaled our commitment to quality, ensuring that every stitch tells a story of meticulous dedication. Our artisans are the pulse of our brand, practicing age-old techniques passed down through generations, now refined for the modern silhouette.</p>
+</div>
+<div class="pt-8">
+<a class="inline-block bg-[#D4AF37] text-white px-12 py-5 font-label-sm text-label-sm uppercase silk-transition hover:bg-[#B8860B] rounded-lg shadow-md text-center" href="collections.html">Explore Our Process</a>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="aspect-[4/5] bg-primary-container p-4 silk-transition hover:translate-y-[-10px] rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover rounded" data-alt="Artisan working on gold embroidery" src="images/bridal-3.jpg"/>
+</div>
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-secondary/10 -z-10 rounded-full blur-3xl"></div>
+</div>
+</div>
+</section>
+<!-- Highlight Bento Grid -->
+<section class="py-stack-lg bg-surface-container-low/50">
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center mb-stack-lg">
+<h2 class="font-display-lg-mobile md:font-headline-md text-display-lg-mobile md:text-headline-md text-on-surface">The Boutique Distinction</h2>
+<p class="text-on-surface-variant mt-2 font-body-md text-body-md">Why Khuda Baksh Creation by Fame Boutique is the preferred choice for discerning women.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Feature 1: Variety -->
+<div class="bg-white p-10 ambient-shadow flex flex-col items-center text-center silk-transition hover:shadow-lg group rounded-xl">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center mb-6 silk-transition group-hover:scale-110">
+<span class="material-symbols-outlined text-secondary text-3xl">grid_view</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Vast Variety</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">From ready-to-wear stitched ensembles to premium unstitched fabrics and bridal couture, our collections cater to every occasion in your life.</p>
+</div>
+<!-- Feature 2: Quality -->
+<div class="bg-white p-10 ambient-shadow flex flex-col items-center text-center silk-transition hover:shadow-lg group rounded-xl">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center mb-6 silk-transition group-hover:scale-110">
+<span class="material-symbols-outlined text-secondary text-3xl">verified</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Quality Assurance</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">We source only the finest silks, chiffons, and lawn fabrics. Every garment undergoes a rigorous multi-stage quality check before it reaches you.</p>
+</div>
+<!-- Feature 3: Price -->
+<div class="bg-white p-10 ambient-shadow flex flex-col items-center text-center silk-transition hover:shadow-lg group rounded-xl">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center mb-6 silk-transition group-hover:scale-110">
+<span class="material-symbols-outlined text-secondary text-3xl">sell</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Reasonable Luxury</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">True luxury should be accessible. We pride ourselves on offering exquisite craftsmanship at prices that reflect exceptional value without compromise.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonial Highlight -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto overflow-hidden">
+<div class="relative bg-primary-container p-12 md:p-20 text-center rounded-xl overflow-hidden">
+<span class="material-symbols-outlined text-secondary opacity-20 text-9xl absolute -top-10 left-10 italic">format_quote</span>
+<div class="relative z-10 max-w-2xl mx-auto">
+<p class="font-headline-sm text-headline-sm italic text-secondary leading-relaxed mb-8">
+                        "The level of detail in the hand embroidery is simply unmatched. It feels like wearing a piece of art that respects my roots but celebrates my modern style."
+                    </p>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full border-2 border-secondary mb-4 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of Sarah Ahmed" src="images/stitched-2.jpg"/>
+</div>
+<h4 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Sarah Ahmed</h4>
+<p class="text-xs text-on-surface-variant/60">Loyal Patron</p>
+<a class="mt-4 text-secondary font-label-sm underline" href="testimonials.html">Read more stories</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section Audit (Integrated for flow) -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="contact-inquiry">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center">
+<div class="space-y-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Get in Touch</h2>
+<p class="text-on-surface-variant font-body-md">Have a specific design in mind or want to inquire about our bridal couture? Send us a message directly via WhatsApp.</p>
+<form class="space-y-4 bg-white p-8 rounded-xl ambient-shadow" id="whatsappForm">
+<div>
+<label class="block text-sm font-label-sm text-on-surface-variant mb-1">Your Name</label>
+<input class="w-full border-outline-variant rounded-lg p-3 focus:border-secondary focus:ring-0" id="custName" required="" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-label-sm text-on-surface-variant mb-1">Phone Number</label>
+<input class="w-full border-outline-variant rounded-lg p-3 focus:border-secondary focus:ring-0" id="custPhone" required="" type="tel"/>
+</div>
+<div>
+<label class="block text-sm font-label-sm text-on-surface-variant mb-1">Message</label>
+<textarea class="w-full border-outline-variant rounded-lg p-3 focus:border-secondary focus:ring-0" id="custMsg" required="" rows="4"></textarea>
+</div>
+<button class="w-full bg-[#D4AF37] text-white py-4 rounded-lg font-label-sm uppercase tracking-widest hover:bg-[#B8860B] silk-transition" type="submit">Send Inquiry via WhatsApp</button>
+</form>
+</div>
+<div class="hidden lg:block">
+<img alt="Boutique Experience" class="rounded-xl shadow-2xl" src="images/fancy-1.jpg"/>
+</div>
+</div>
+</section>
+<!-- Craftsmanship Philosophy -->
+<section class="pb-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div class="order-2 md:order-1">
+<img class="w-full h-auto aspect-video object-cover ambient-shadow rounded-lg" data-alt="Fame Boutique Studio" src="images/casual-2.jpg"/>
+</div>
+<div class="order-1 md:order-2 space-y-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Meticulous Craftsmanship</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">At Khuda Baksh Creation, we don't believe in mass production. Each piece is a result of hours of handiwork. From the initial conceptual sketch to the final beadwork, our designers and master tailors collaborate to ensure perfection.</p>
+<ul class="space-y-4">
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
+<span>Hand-picked premium fabrics from across Pakistan.</span>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
+<span>Traditional Multani embroidery integrated into modern cuts.</span>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary mt-1">check_circle</span>
+<span>Expert custom stitching tailored to your exact measurements.</span>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low w-full pt-stack-lg pb-stack-md border-t border-surface-container">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<img alt="Logo" class="h-12 w-auto mb-6" src="images/logo.png"/>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Redefining elegance through the lens of heritage and craftsmanship since 1994.</p>
+<div class="flex gap-4">
+<a href="https://wa.me/923026825777?text=Hello%20Khuda%20Baksh%20Creation%2C%20I%20saw%20your%20website%20and%20wanted%20to%20connect." target="_blank">
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:opacity-70 silk-transition">chat</span>
+</a>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:opacity-70 silk-transition">face_nod</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:opacity-70 silk-transition">share</span>
+</div>
+</div>
+<div class="col-span-1">
+<h4 class="font-label-sm text-label-sm text-secondary mb-6 uppercase tracking-widest">Collections</h4>
+<ul class="space-y-3 font-label-sm text-label-sm text-on-surface-variant">
+<li><a class="hover:text-secondary hover:underline silk-transition" href="collections.html#stitched">Stitched</a></li>
+<li><a class="hover:text-secondary hover:underline silk-transition" href="collections.html#unstitched">Unstitched</a></li>
+<li><a class="hover:text-secondary hover:underline silk-transition" href="collections.html#bridal">Bridal</a></li>
+<li><a class="hover:text-secondary hover:underline silk-transition" href="custom-stitching.html">Custom Stitching</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h4 class="font-label-sm text-label-sm text-secondary mb-6 uppercase tracking-widest">Company</h4>
+<ul class="space-y-3 font-label-sm text-label-sm text-on-surface-variant">
+<li><a class="text-secondary font-bold" href="about.html">About Us</a></li>
+<li><a class="hover:text-secondary hover:underline silk-transition" href="contact.html">Contact</a></li>
+<li><a class="hover:text-secondary hover:underline silk-transition" href="contact.html">Careers</a></li>
+<li><a class="hover:text-secondary hover:underline silk-transition" href="index.html">Privacy Policy</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h4 class="font-label-sm text-label-sm text-secondary mb-6 uppercase tracking-widest">Newsletter</h4>
+<p class="text-xs text-on-surface-variant mb-4">Join our elite circle for early access to new collections.</p>
+<div class="flex flex-col gap-2">
+<input class="bg-white border-outline-variant focus:border-secondary focus:ring-0 text-sm py-3 px-4 rounded-lg" placeholder="Email Address" type="email"/>
+<button class="bg-[#D4AF37] text-white py-3 font-label-sm text-label-sm uppercase hover:bg-[#B8860B] silk-transition rounded-lg">Subscribe</button>
+</div>
+</div>
+</div>
+<div class="mt-stack-lg border-t border-surface-dim pt-8 text-center px-margin-mobile">
+<p class="font-label-sm text-label-sm text-on-surface-variant/80">© 2024 Khuda Baksh Creation By Fame Boutique. All Rights Reserved.</p>
+</div>
+</footer>
+<!-- WhatsApp Floating Button -->
+<a class="fixed bottom-8 right-8 z-[70] bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 silk-transition active:scale-95" href="https://wa.me/923026825777?text=Hello%20Khuda%20Baksh%20Creation%2C%20I'm%20interested%20in%20your%20latest%20collection." target="_blank">
+<svg fill="currentColor" height="32" viewbox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+<path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.516.893 3.004 1.347 4.947 1.348 5.451 0 9.887-4.436 9.889-9.888.002-5.452-4.435-9.887-9.888-9.887-5.455 0-9.89 4.435-9.89 9.888 0 2.022.539 3.593 1.558 5.222l-1.018 3.714 3.842-.997zm11.367-7.405c-.32-.16-1.891-.932-2.185-1.039-.294-.107-.507-.16-.721.16-.213.32-.826 1.039-1.012 1.252-.187.213-.373.24-.693.08-.32-.16-1.352-.498-2.577-1.59-.953-.85-1.594-1.9-1.781-2.219-.187-.32-.02-.493.14-.652.145-.143.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.721-1.732-1.012-2.433-.284-.68-.57-.588-.781-.598-.202-.01-.433-.012-.666-.012-.233 0-.613.087-.933.426-.32.339-1.226 1.198-1.226 2.92 0 1.722 1.253 3.384 1.426 3.611.173.227 2.466 3.765 5.972 5.282.834.361 1.485.576 1.993.737.838.267 1.599.229 2.203.139.673-.101 1.891-.772 2.158-1.478.267-.706.267-1.312.187-1.439-.08-.126-.294-.213-.614-.373z"></path>
+</svg>
+</a>
+<script>
+        const menuBtn = document.getElementById('menuBtn');
+        const drawer = document.getElementById('drawer');
+        const overlay = document.getElementById('overlay');
+
+        const toggleDrawer = () => {
+            drawer.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        };
+
+        menuBtn.addEventListener('click', toggleDrawer);
+        overlay.addEventListener('click', toggleDrawer);
+
+        // Handle Contact Form to WhatsApp
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const msg = document.getElementById('custMsg').value;
+            const encodedMsg = encodeURIComponent(`Inquiry from Website:\n\nName: ${name}\nPhone: ${phone}\nMessage: ${msg}`);
+            window.open(`https://wa.me/923026825777?text=${encodedMsg}`, '_blank');
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-md');
+                nav.classList.remove('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.add('shadow-sm');
+            }
+        });
+    </script>
+</body></html>

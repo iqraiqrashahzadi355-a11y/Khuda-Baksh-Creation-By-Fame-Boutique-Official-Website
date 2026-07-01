@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Khuda Baksh Creation By Fame Boutique - Multan's premier women's clothing boutique. Stitched, unstitched, fancy, casual and bridal wear with custom stitching services."/>
+<title>Khuda Baksh Creation | Exquisite Pakistani Craftsmanship</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  darkMode:"class",
+  theme:{extend:{
+    colors:{
+      "primary":"#665c5e","primary-container":"#f5e6e8","on-primary":"#fff","on-primary-container":"#716668",
+      "secondary":"#735c00","secondary-container":"#fed65b","on-secondary":"#fff","on-secondary-container":"#745c00",
+      "surface":"#fcf9f8","surface-container":"#f0eded","surface-container-low":"#f6f3f2","surface-container-high":"#eae7e7",
+      "on-surface":"#1c1b1b","on-surface-variant":"#4d4546",
+      "outline":"#7f7576","outline-variant":"#d0c3c5","background":"#fcf9f8",
+      "gold":"#D4AF37"
+    },
+    fontFamily:{"headline":["Playfair Display"],"body":["Montserrat"]},
+  }}
+}
+</script>
+<style>
+  body{font-family:'Montserrat',sans-serif;}
+  h1,h2,h3,.font-display,.font-headline{font-family:'Playfair Display',serif;}
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
+  .filled-icon{font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;}
+  .reveal{opacity:0;transform:translateY(30px);transition:all 0.8s ease-out;}
+  .reveal.active{opacity:1;transform:translateY(0);}
+  .ambient-lift{transition:transform 0.4s cubic-bezier(0.2,0,0.2,1),box-shadow 0.4s cubic-bezier(0.2,0,0.2,1);}
+  .ambient-lift:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,0.08);}
+</style>
+</head>
+<body class="bg-[#fcf9f8] text-[#1c1b1b]">
+
+<!-- Mobile Drawer -->
+<div class="fixed inset-y-0 left-0 z-[70] w-80 bg-white -translate-x-full transition-transform duration-300 lg:hidden shadow-xl" id="nav-drawer">
+  <div class="p-6 flex justify-between items-center border-b border-[#d0c3c5]">
+    <img src="images/logo.png" alt="Logo" class="h-10 w-auto"/>
+    <button onclick="toggleDrawer()"><span class="material-symbols-outlined">close</span></button>
+  </div>
+  <nav class="flex flex-col py-4">
+    <a href="index.html" class="bg-[#fed65b] text-[#735c00] rounded-full mx-4 my-1 px-4 py-3 text-xs font-bold uppercase tracking-widest">Home</a>
+    <a href="collections.html" class="text-[#4d4546] mx-4 my-1 px-4 py-3 text-xs font-semibold uppercase tracking-widest hover:bg-[#f5e6e8]">Collections</a>
+    <a href="about.html" class="text-[#4d4546] mx-4 my-1 px-4 py-3 text-xs font-semibold uppercase tracking-widest hover:bg-[#f5e6e8]">About Us</a>
+    <a href="custom-stitching.html" class="text-[#4d4546] mx-4 my-1 px-4 py-3 text-xs font-semibold uppercase tracking-widest hover:bg-[#f5e6e8]">Custom Stitching</a>
+    <a href="testimonials.html" class="text-[#4d4546] mx-4 my-1 px-4 py-3 text-xs font-semibold uppercase tracking-widest hover:bg-[#f5e6e8]">Testimonials</a>
+    <a href="contact.html" class="text-[#4d4546] mx-4 my-1 px-4 py-3 text-xs font-semibold uppercase tracking-widest hover:bg-[#f5e6e8]">Contact</a>
+  </nav>
+</div>
+<div class="fixed inset-0 bg-black/20 z-[65] hidden" id="drawer-overlay" onclick="toggleDrawer()"></div>
+
+<!-- Header -->
+<header class="sticky top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-[#d0c3c5]/40 shadow-sm">
+  <div class="flex justify-between items-center max-w-7xl mx-auto px-5 md:px-20 py-3">
+    <div class="flex items-center gap-4">
+      <button class="lg:hidden text-[#735c00]" onclick="toggleDrawer()">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="index.html" class="text-[#735c00] border-b-2 border-[#735c00] text-xs font-bold uppercase tracking-widest py-1">Home</a>
+        <a href="collections.html" class="text-[#4d4546] hover:text-[#735c00] transition-colors text-xs font-semibold uppercase tracking-widest py-1">Collections</a>
+        <a href="about.html" class="text-[#4d4546] hover:text-[#735c00] transition-colors text-xs font-semibold uppercase tracking-widest py-1">About Us</a>
+      </nav>
+    </div>
+    <a href="index.html" class="absolute left-1/2 -translate-x-1/2">
+      <img src="images/logo.png" alt="Khuda Baksh Creation" class="h-12 w-auto"/>
+    </a>
+    <div class="flex items-center gap-6">
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="custom-stitching.html" class="text-[#4d4546] hover:text-[#735c00] transition-colors text-xs font-semibold uppercase tracking-widest py-1">Custom Stitching</a>
+        <a href="contact.html" class="text-[#4d4546] hover:text-[#735c00] transition-colors text-xs font-semibold uppercase tracking-widest py-1">Contact</a>
+      </nav>
+      <a href="https://wa.me/923026825777?text=Hi, I found your boutique online and want to know more" target="_blank" class="text-[#735c00]">
+        <span class="material-symbols-outlined">chat</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="relative h-[90vh] flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0">
+    <div class="w-full h-full bg-cover bg-center" style="background-image:url('images/hero.jpg')"></div>
+    <div class="absolute inset-0 bg-black/45"></div>
+  </div>
+  <div class="relative z-10 text-center px-5 max-w-4xl mx-auto">
+    <p class="text-white/80 text-xs font-bold uppercase tracking-[0.3em] mb-6 reveal">Multan's Legacy of Elegance</p>
+    <h1 class="font-display text-3xl md:text-5xl text-white mb-8 reveal leading-tight" style="transition-delay:200ms">Exquisite Pakistani Craftsmanship<br/>Delivered to Your Doorstep</h1>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center reveal" style="transition-delay:400ms">
+      <a href="https://wa.me/923026825777?text=Hi, I want to place an order" target="_blank"
+         class="bg-[#D4AF37] text-white px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-[#b8962e] transition-all shadow-lg flex items-center gap-2 rounded">
+        <span class="material-symbols-outlined text-lg">call</span> WhatsApp Order
+      </a>
+      <a href="collections.html"
+         class="border border-white text-white px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-[#1c1b1b] transition-all rounded">
+        Explore Collections
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="bg-[#f0eded] py-12 border-b border-[#d0c3c5]/30" id="trust-bar">
+  <div class="max-w-7xl mx-auto px-5 md:px-20">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="flex flex-col items-center">
+        <span class="text-4xl mb-2">👗</span>
+        <div class="text-2xl font-bold text-[#735c00] flex items-center gap-1">
+          <span class="counter" data-target="500">0</span><span>+</span>
+        </div>
+        <p class="text-[10px] font-bold uppercase tracking-widest text-[#4d4546] mt-1">Happy Customers</p>
+      </div>
+      <div class="flex flex-col items-center md:border-l md:border-[#d0c3c5]/40">
+        <span class="text-4xl mb-2">⭐</span>
+        <div class="text-2xl font-bold text-[#735c00] flex items-center gap-1">
+          <span class="counter" data-target="4.8" data-decimals="1">0</span><span>/5</span>
+        </div>
+        <p class="text-[10px] font-bold uppercase tracking-widest text-[#4d4546] mt-1">Google Rating</p>
+      </div>
+      <div class="flex flex-col items-center md:border-l md:border-[#d0c3c5]/40">
+        <span class="text-4xl mb-2">✂️</span>
+        <div class="text-2xl font-bold text-[#735c00] flex items-center gap-1">
+          <span class="counter" data-target="10">0</span><span>+</span>
+        </div>
+        <p class="text-[10px] font-bold uppercase tracking-widest text-[#4d4546] mt-1">Years Experience</p>
+      </div>
+      <div class="flex flex-col items-center md:border-l md:border-[#d0c3c5]/40">
+        <span class="text-4xl mb-2">🏪</span>
+        <div class="text-2xl font-bold text-[#735c00]">
+          <span class="counter" data-target="1">0</span>
+        </div>
+        <p class="text-[10px] font-bold uppercase tracking-widest text-[#4d4546] mt-1">Location in Multan</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT INTRO -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-5 md:px-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="reveal">
+      <span class="text-[#735c00] text-xs font-bold uppercase tracking-widest mb-4 block">Our Heritage</span>
+      <h2 class="font-display text-3xl md:text-4xl text-[#1c1b1b] mb-6">Born in the Heart of Multan</h2>
+      <p class="text-[#4d4546] text-lg leading-relaxed mb-8">
+        Located in the heart of Multan, we bring you a vast variety of stitched and unstitched dresses, known for quality stitching and reasonable prices. Our designs capture the essence of traditional artistry while embracing contemporary silhouettes.
+      </p>
+      <div class="flex gap-12 mb-8">
+        <div>
+          <span class="block text-2xl font-bold text-[#735c00]">10+</span>
+          <span class="text-xs font-bold uppercase tracking-widest text-[#4d4546]">Years of Craft</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-[#735c00]">500+</span>
+          <span class="text-xs font-bold uppercase tracking-widest text-[#4d4546]">Happy Clients</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-[#735c00]">4.8⭐</span>
+          <span class="text-xs font-bold uppercase tracking-widest text-[#4d4546]">Google Rating</span>
+        </div>
+      </div>
+      <a href="about.html" class="bg-[#735c00] text-white px-8 py-3 text-xs font-bold uppercase tracking-widest hover:bg-[#5a4700] transition-all rounded inline-block">Our Story</a>
+    </div>
+    <div class="reveal relative" style="transition-delay:200ms">
+      <div class="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
+        <img src="images/fancy-1.jpg" alt="Boutique collection" class="w-full h-full object-cover"/>
+      </div>
+      <div class="absolute -bottom-6 -left-6 bg-[#f5e6e8] p-6 rounded-xl shadow-xl hidden md:block">
+        <p class="font-display text-lg text-[#665c5e] italic">"Quality that speaks for itself."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED COLLECTIONS -->
+<section class="py-20 bg-[#f6f3f2]">
+  <div class="max-w-7xl mx-auto px-5 md:px-20">
+    <div class="flex justify-between items-end mb-12 reveal">
+      <div>
+        <span class="text-[#735c00] text-xs font-bold uppercase tracking-widest mb-2 block">Curation</span>
+        <h2 class="font-display text-3xl md:text-4xl text-[#1c1b1b]">The Seasonal Lookbook</h2>
+      </div>
+      <a href="collections.html" class="hidden md:block text-xs font-bold uppercase tracking-widest text-[#735c00] border border-[#735c00] px-5 py-2 rounded hover:bg-[#735c00] hover:text-white transition-all">View All</a>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-5 reveal" style="transition-delay:200ms">
+      <!-- Stitched -->
+      <div class="group ambient-lift cursor-pointer" onclick="location.href='collections.html#stitched'">
+        <div class="aspect-[4/5] overflow-hidden mb-3 rounded-lg">
+          <img src="images/stitched-1.jpg" alt="Stitched Suits" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+        </div>
+        <h3 class="font-display text-lg text-[#1c1b1b] mb-1">Stitched</h3>
+        <p class="text-[10px] font-bold uppercase tracking-widest text-[#4d4546] mb-3">Luxury Party Wear</p>
+        <a href="collections.html#stitched" class="text-[#735c00] text-xs font-bold flex items-center gap-1 hover:gap-2 transition-all">
+          Shop Now <span class="material-symbols-outlined text-sm">east</span>
+        </a>
+      </div>
+      <!-- Unstitched -->
+      <div class="group ambient-lift cursor-pointer" onclick="location.href='collections.html#unstitched'">
+        <div class="aspect-[4/5] overflow-hidden mb-3 rounded-lg">
+          <img src="images/unstitched-2.jpg" alt="Unstitched Fabric" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+        </div>
+        <h3 class="font-display text-lg text-[#1c1b1b] mb-1">Unstitched</h3>
+        <p class="text-[10px] font-bold uppercase tracking-widest text-[#4d4546] mb-3">Premium Fabrics</p>
+        <a href="collections.html#unstitched" class="text-[#735c00] text-xs font-bold flex items-center gap-1 hover:gap-2 transition-all">
+          Shop Now <span class="material-symbols-outlined text-sm">east</span>
+        </a>
+      </div>
+      <!-- Fancy -->
+      <div class="group ambient-lift cursor-pointer" onclick="location.href='collections.html#fancy'">
+        <div class="aspect-[4/5] overflow-hidden mb-3 rounded-lg">
+          <img src="images/fancy-2.jpg" alt="Fancy Wear" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+        </div>
+        <h3 class="font-display text-lg text-[#1c1b1b] mb-1">Fancy</h3>
+        <p class="text-[10px] font-bold uppercase tracking-widest text-[#4d4546] mb-3">Silver Embroidery</p>
+        <a href="collections.html#fancy" class="text-[#735c00] text-xs font-bold flex items-center gap-1 hover:gap-2 transition-all">
+          Shop Now <span class="material-symbols-outlined text-sm">east</span>
+        </a>
+      </div>
+      <!-- Casual -->
+      <div class="group ambient-lift cursor-pointer" onclick="location.href='collections.html#casual'">
+        <div class="aspect-[4/5] overflow-hidden mb-3 rounded-lg">
+          <img src="images/casual-1.jpg" alt="Casual Lawn" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+        </div>
+        <h3 class="font-display text-lg text-[#1c1b1b] mb-1">Casual</h3>
+        <p class="text-[10px] font-bold uppercase tracking-widest text-[#4d4546] mb-3">Vibrant Lawn Prints</p>
+        <a href="collections.html#casual" class="text-[#735c00] text-xs font-bold flex items-center gap-1 hover:gap-2 transition-all">
+          Shop Now <span class="material-symbols-outlined text-sm">east</span>
+        </a>
+      </div>
+      <!-- Bridal -->
+      <div class="group ambient-lift cursor-pointer" onclick="location.href='collections.html#bridal'">
+        <div class="aspect-[4/5] overflow-hidden mb-3 rounded-lg">
+          <img src="images/bridal-2.jpg" alt="Bridal Wear" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+        </div>
+        <h3 class="font-display text-lg text-[#1c1b1b] mb-1">Bridal</h3>
+        <p class="text-[10px] font-bold uppercase tracking-widest text-[#4d4546] mb-3">Exquisite Couture</p>
+        <a href="collections.html#bridal" class="text-[#735c00] text-xs font-bold flex items-center gap-1 hover:gap-2 transition-all">
+          Shop Now <span class="material-symbols-outlined text-sm">east</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOM STITCHING PROMO -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-5 md:px-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div class="grid grid-cols-2 gap-4 reveal">
+      <img src="images/stitched-2.jpg" alt="Custom stitching" class="rounded-xl shadow-lg w-full h-64 object-cover"/>
+      <img src="images/stitched-3.jpg" alt="Stitching detail" class="rounded-xl shadow-lg w-full h-64 object-cover mt-8"/>
+    </div>
+    <div class="reveal" style="transition-delay:200ms">
+      <span class="material-symbols-outlined text-4xl text-[#735c00] mb-4 block">content_cut</span>
+      <span class="text-[#735c00] text-xs font-bold uppercase tracking-widest mb-3 block">Bespoke Tailoring</span>
+      <h2 class="font-display text-3xl md:text-4xl text-[#1c1b1b] mb-6">Your Fit, Your Style</h2>
+      <p class="text-[#4d4546] text-lg leading-relaxed mb-6">We offer specialized custom stitching for all our unstitched collections. Choose from our signature Multani cuts or provide your own measurements for a truly personalized experience.</p>
+      <ul class="flex flex-col gap-3 mb-8">
+        <li class="flex items-center gap-3 text-[#4d4546]"><span class="material-symbols-outlined text-[#735c00] filled-icon">check_circle</span> Precision Cutting & Sizing</li>
+        <li class="flex items-center gap-3 text-[#4d4546]"><span class="material-symbols-outlined text-[#735c00] filled-icon">check_circle</span> Traditional & Modern Designs</li>
+        <li class="flex items-center gap-3 text-[#4d4546]"><span class="material-symbols-outlined text-[#735c00] filled-icon">check_circle</span> Custom Orders via WhatsApp</li>
+      </ul>
+      <a href="custom-stitching.html" class="bg-[#735c00] text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-[#5a4700] transition-all rounded inline-flex items-center gap-2">
+        Book Stitching <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS STRIP -->
+<section class="py-20 bg-[#f5e6e8]/40">
+  <div class="max-w-7xl mx-auto px-5 md:px-20 text-center">
+    <span class="text-[#735c00] text-xs font-bold uppercase tracking-widest mb-4 block reveal">Client Love</span>
+    <h2 class="font-display text-3xl md:text-4xl text-[#1c1b1b] mb-16 reveal">Voices of Elegance</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-8 bg-[#f5e6e8] rounded-2xl reveal" style="transition-delay:100ms">
+        <span class="material-symbols-outlined text-[#D4AF37] text-5xl mb-4 block">format_quote</span>
+        <p class="font-display text-lg italic text-[#665c5e] leading-relaxed mb-6">"Vast variety of clothes in reasonable price! Best boutique in Multan."</p>
+        <p class="text-xs font-bold uppercase tracking-widest text-[#4d4546]">— Sana M., Multan</p>
+      </div>
+      <div class="p-8 bg-[#f5e6e8] rounded-2xl reveal" style="transition-delay:200ms">
+        <span class="material-symbols-outlined text-[#D4AF37] text-5xl mb-4 block">format_quote</span>
+        <p class="font-display text-lg italic text-[#665c5e] leading-relaxed mb-6">"Got my bridal dress made here. The embroidery work was exceptional and delivered on time!"</p>
+        <p class="text-xs font-bold uppercase tracking-widest text-[#4d4546]">— Maryam A., Multan</p>
+      </div>
+      <div class="p-8 bg-[#f5e6e8] rounded-2xl reveal" style="transition-delay:300ms">
+        <span class="material-symbols-outlined text-[#D4AF37] text-5xl mb-4 block">format_quote</span>
+        <p class="font-display text-lg italic text-[#665c5e] leading-relaxed mb-6">"Reasonable prices for such high-end quality. Khuda Baksh is my go-to for all events."</p>
+        <p class="text-xs font-bold uppercase tracking-widest text-[#4d4546]">— Zainab R., Lahore</p>
+      </div>
+    </div>
+    <div class="mt-10 reveal" style="transition-delay:400ms">
+      <a href="testimonials.html" class="border border-[#735c00] text-[#735c00] px-8 py-3 text-xs font-bold uppercase tracking-widest hover:bg-[#735c00] hover:text-white transition-all rounded inline-block">Read All Reviews</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-[#f6f3f2] border-t border-[#d0c3c5]/30 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-5 md:px-20 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+    <div class="col-span-1 md:col-span-2">
+      <img src="images/logo.png" alt="Logo" class="h-10 w-auto mb-5"/>
+      <p class="text-[#4d4546] text-sm leading-relaxed max-w-sm mb-6">Multan's premier boutique for handcrafted excellence. Quality stitching and premium fabrics.</p>
+      <div class="flex gap-3">
+        <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full bg-white border border-[#d0c3c5] flex items-center justify-center hover:bg-[#735c00] hover:text-white transition-all text-[#4d4546]">
+          <span class="material-symbols-outlined text-sm">photo_camera</span>
+        </a>
+        <a href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-full bg-white border border-[#d0c3c5] flex items-center justify-center hover:bg-[#735c00] hover:text-white transition-all text-[#4d4546]">
+          <span class="material-symbols-outlined text-sm">share</span>
+        </a>
+        <a href="https://wa.me/923026825777" target="_blank" class="w-10 h-10 rounded-full bg-white border border-[#d0c3c5] flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-all text-[#4d4546]">
+          <span class="material-symbols-outlined text-sm">chat</span>
+        </a>
+      </div>
+    </div>
+    <div>
+      <h4 class="text-xs font-bold uppercase tracking-widest text-[#1c1b1b] mb-5">Collections</h4>
+      <ul class="flex flex-col gap-3">
+        <li><a href="collections.html#stitched" class="text-[#4d4546] hover:text-[#735c00] text-sm transition-all">Stitched Collection</a></li>
+        <li><a href="collections.html#unstitched" class="text-[#4d4546] hover:text-[#735c00] text-sm transition-all">Unstitched Fabric</a></li>
+        <li><a href="collections.html#bridal" class="text-[#4d4546] hover:text-[#735c00] text-sm transition-all">Bridal Wear</a></li>
+        <li><a href="custom-stitching.html" class="text-[#4d4546] hover:text-[#735c00] text-sm transition-all">Custom Stitching</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-xs font-bold uppercase tracking-widest text-[#1c1b1b] mb-5">Contact Us</h4>
+      <address class="not-italic text-[#4d4546] text-sm flex flex-col gap-3">
+        <p class="flex items-start gap-2"><span class="material-symbols-outlined text-[#735c00] text-base">location_on</span> Tariqabad, Multan, Pakistan</p>
+        <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[#735c00] text-base">call</span> +92 302 6825777</p>
+        <p class="flex items-center gap-2"><span class="material-symbols-outlined text-[#735c00] text-base">schedule</span> 11AM–11PM (Fri: Closed)</p>
+      </address>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 md:px-20 pt-8 border-t border-[#d0c3c5]/30 flex flex-col md:flex-row justify-between items-center gap-4">
+    <p class="text-xs text-[#4d4546]">© 2024 Khuda Baksh Creation By Fame Boutique. All Rights Reserved.</p>
+    <div class="flex gap-6">
+      <a href="about.html" class="text-xs text-[#4d4546] hover:text-[#735c00]">About</a>
+      <a href="contact.html" class="text-xs text-[#4d4546] hover:text-[#735c00]">Contact</a>
+      <a href="testimonials.html" class="text-xs text-[#4d4546] hover:text-[#735c00]">Reviews</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+  class="fixed bottom-8 left-8 z-[100] bg-[#735c00] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all opacity-0 pointer-events-none">
+  <span class="material-symbols-outlined">arrow_upward</span>
+</button>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/923026825777?text=Hi, I found your boutique online and want to know more" target="_blank"
+   class="fixed bottom-8 right-8 z-[100] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform group">
+  <svg fill="currentColor" height="28" width="28" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.891 11.891-11.891 3.181 0 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.481 8.403 0 6.556-5.332 11.891-11.891 11.891-2.007 0-3.974-.508-5.713-1.472l-6.28 1.69zm5.343-4.225l.383.227c1.439.856 3.093 1.308 4.789 1.308 5.147 0 9.336-4.189 9.336-9.336 0-2.493-.97-4.837-2.73-6.597s-4.103-2.73-6.597-2.73c-5.147 0-9.336 4.19-9.336 9.337 0 1.76.471 3.478 1.36 4.973l.248.418-1.002 3.653 3.75-1.011zm12.385-6.074c-.161-.081-1.011-.497-1.168-.553s-.273-.081-.387.091-.441.553-.54.665-.198.125-.359.044-.679-.25-1.294-.799c-.479-.427-.802-.955-.896-1.116s-.01-.248.071-.328c.073-.072.161-.188.242-.281.081-.094.108-.157.161-.261s.027-.197-.014-.281c-.04-.083-.387-.932-.53-1.277-.14-.337-.282-.291-.387-.297-.1-.005-.214-.006-.328-.006s-.301.043-.458.214c-.157.172-.6.586-.6 1.43s.613 1.658.698 1.772.086.114 1.206 1.841c.408.177.727.282.976.361.41.13.783.112 1.078.067.33-.05 1.011-.413 1.153-.812.143-.399.143-.74.1-.812s-.158-.113-.319-.194z"/></svg>
+  <span class="absolute right-full mr-3 bg-white px-3 py-1.5 rounded-lg shadow-lg text-[#735c00] text-xs font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">WhatsApp Us</span>
+</a>
+
+<script>
+// Scroll Reveal
+function revealOnScroll(){
+  document.querySelectorAll('.reveal').forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight-100) el.classList.add('active');
+  });
+}
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+// Mobile Drawer
+function toggleDrawer(){
+  document.getElementById('nav-drawer').classList.toggle('-translate-x-full');
+  document.getElementById('drawer-overlay').classList.toggle('hidden');
+}
+
+// Back to Top
+window.addEventListener('scroll',()=>{
+  const btn=document.getElementById('back-to-top');
+  if(window.scrollY>300){btn.classList.remove('opacity-0','pointer-events-none');btn.classList.add('opacity-100','pointer-events-auto');}
+  else{btn.classList.add('opacity-0','pointer-events-none');btn.classList.remove('opacity-100','pointer-events-auto');}
+});
+
+// Counter Animation using IntersectionObserver
+function animateCounter(el){
+  const target = parseFloat(el.dataset.target);
+  const decimals = parseInt(el.dataset.decimals||0);
+  const duration = 2000;
+  const step = 16;
+  const increment = target / (duration/step);
+  let current = 0;
+  const timer = setInterval(()=>{
+    current += increment;
+    if(current >= target){ current = target; clearInterval(timer); }
+    el.textContent = decimals ? current.toFixed(decimals) : Math.floor(current);
+  }, step);
+}
+const counterObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.querySelectorAll('.counter').forEach(animateCounter);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:0.3});
+const trustBar = document.getElementById('trust-bar');
+if(trustBar) counterObserver.observe(trustBar);
+</script>
+</body>
+</html>
