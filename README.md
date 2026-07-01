@@ -31,25 +31,25 @@ A **fully functional, multi-page business website** for Khuda Baksh Creation By 
 
 ## 🖼️ Screenshots
 
-> 📸 **How to take screenshots:**
-> 1. Extract the zip → double-click `index.html` to open in Chrome
-> 2. Press **F12** → **Ctrl+Shift+M** (toggle mobile view for phone screenshot)
-> 3. **Windows:** `Win+Shift+S` &nbsp; **Mac:** `Cmd+Shift+4`
-> 4. Save screenshots as: `home.png`, `collections.png`, `custom-stitching.png`, `contact.png`, `testimonials.png`, `about.png`, `mobile.png`
-> 5. Create a `screenshots/` folder in your repo → upload all screenshots there
-> 6. The images below will auto-appear once uploaded ✅
-
 ### 🏠 Home Page
-<img src="screenshots/home.png" alt="Home Page" width="100%"/>
+<img src="assests/_E__khuda_baksh_website_index.html.png" width="100%"/>
 
 ### 👗 Collections Page
-<img src="screenshots/collections.png" alt="Collections Page" width="100%"/>
+<img src="assests/_E__khuda_baksh_website_collections.html.png" width="100%"/>
 
 ### ✂️ Custom Stitching
-<img src="screenshots/custom-stitching.png" alt="Custom Stitching Page" width="100%"/>
+<img src="assests/_E__khuda_baksh_website_custom-stitching.html.png" width="100%"/>
+
+### 📝 About page
+<img src="assests/_E__khuda_baksh_website_about.html.png" width="100%"/>
 
 ### 📞 Contact Page
-<img src="screenshots/contact.png" alt="Contact Page" width="100%"/>
+<img src="assests/_E__khuda_baksh_website_contact.html.png" width="100%"/>
+
+### 💬 Whatsapp 
+<img src="assests/api.whatsapp.com_send__phone=923026825777&text&type=phone_number&app_absent=0&wame_ctl=1.png" width="100%"/>
+
+
 
 <details>
 <summary>📱 More Screenshots (Testimonials • About • Mobile)</summary>
