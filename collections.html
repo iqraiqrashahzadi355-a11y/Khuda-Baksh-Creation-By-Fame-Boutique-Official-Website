@@ -346,11 +346,11 @@
 </a>
 <script>
     const categoryImages = {
-        stitched: ["images/stitched-1.jpg","images/stitched-2.jpg","images/stitched-3.jpg"],
-        unstitched: ["images/unstitched-1.jpg","images/unstitched-2.jpg","images/unstitched-3.jpg","images/unstitched-4.jpg"],
-        fancy: ["images/fancy-1.jpg","images/fancy-2.jpg","images/fancy-3.jpg"],
-        casual: ["images/casual-1.jpg","images/casual-2.jpg","images/casual-3.jpg","images/casual-4.jpg"],
-        bridal: ["images/bridal-1.jpg","images/bridal-2.jpg","images/bridal-3.jpg","images/bridal-4.jpg","images/bridal-5.jpg","images/bridal-6.jpg","images/bridal-7.jpg","images/bridal-8.jpg","images/bridal-9.jpg"]
+        stitched:   ["images/stitched-1.jpg","images/stitched-2.jpg","images/stitched-3.jpg","images/stitched-4.jpg","images/stitched-5.jpg","images/stitched-6.jpg","images/unstitched-1.jpg","images/unstitched-2.jpg","images/unstitched-3.jpg","images/unstitched-4.jpg","images/unstitched-5.jpg","images/unstitched-6.jpg","images/unstitched-7.jpg","images/unstitched-8.jpg"],
+        unstitched: ["images/stitched-1.jpg","images/stitched-2.jpg","images/stitched-3.jpg","images/stitched-4.jpg","images/stitched-5.jpg","images/stitched-6.jpg","images/unstitched-1.jpg","images/unstitched-2.jpg","images/unstitched-3.jpg","images/unstitched-4.jpg","images/unstitched-5.jpg","images/unstitched-6.jpg","images/unstitched-7.jpg","images/unstitched-8.jpg"],
+        fancy:      ["images/fancy-1.jpg","images/fancy-2.jpg","images/fancy-3.jpg","images/fancy-4.jpg","images/fancy-5.jpg","images/fancy-6.jpg","images/fancy-7.jpg","images/fancy-8.jpg","images/fancy-9.jpg","images/fancy-10.jpg","images/fancy-11.jpg","images/fancy-12.jpg","images/fancy-13.jpg","images/fancy-14.jpg","images/fancy-15.jpg"],
+        casual:     ["images/casual-1.jpg","images/casual-2.jpg","images/casual-3.jpg","images/casual-4.jpg","images/casual-5.jpg","images/casual-6.jpg","images/casual-7.jpg","images/casual-8.jpg","images/casual-9.jpg"],
+        bridal:     ["images/bridal-1.jpg","images/bridal-2.jpg","images/bridal-3.jpg","images/bridal-4.jpg","images/bridal-5.jpg","images/bridal-6.jpg","images/bridal-7.jpg","images/bridal-8.jpg","images/bridal-9.jpg","images/bridal-10.jpg","images/bridal-11.jpg","images/bridal-12.jpg","images/bridal-13.jpg","images/bridal-14.jpg","images/bridal-15.jpg","images/bridal-16.jpg","images/bridal-17.jpg","images/bridal-18.jpg","images/bridal-19.jpg","images/bridal-20.jpg","images/bridal-21.jpg"]
     };
 
     const priceRanges = {
@@ -367,8 +367,9 @@
     const suffixNames = ['Couture', 'Ensemble', 'Lehenga', 'Suit', 'Collection', 'Heritage', 'Fabrics', 'Poshak', 'Angrakha'];
 
     // Generate products with logic
+    const cardsPerCat = {stitched:14, unstitched:14, fancy:15, casual:9, bridal:21};
     categories.forEach(cat => {
-        for(let i=0; i<30; i++) {
+        for(let i=0; i<cardsPerCat[cat]; i++) {
             const range = priceRanges[cat];
             // Price Logic: Random multiple of 500 within range
             let rawPrice = range.min + (Math.floor(Math.random() * ((range.max - range.min) / 500)) * 500);
@@ -572,3 +573,22 @@
     });
 </script>
 </body></html>
+<script>
+// Merge admin-added products with default products
+document.addEventListener('DOMContentLoaded', () => {
+    const customProducts = JSON.parse(localStorage.getItem('kb_products') || '[]');
+    if (!customProducts.length) return;
+    // Add custom products to the products array and re-render
+    customProducts.forEach(p => {
+        products.push({
+            id: 'custom-' + p.id,
+            name: p.name,
+            category: p.category,
+            image: p.image || 'images/fancy-1.jpg',
+            price: p.price,
+            badge: p.badge ? { text: p.badge, class: 'bg-[#FFD700] text-black' } : null
+        });
+    });
+    renderProducts();
+});
+</script>

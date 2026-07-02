@@ -421,3 +421,25 @@
 </script>
 </body>
 </html>
+<script>
+// Load reviews from localStorage if admin has added/modified them
+document.addEventListener('DOMContentLoaded', () => {
+    const stored = localStorage.getItem('kb_reviews');
+    if (!stored) return; // use hardcoded reviews if no admin data
+    const reviews = JSON.parse(stored);
+    const grid = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3');
+    if (!grid || !reviews.length) return;
+    grid.innerHTML = reviews.map(r => `
+        <div class="bg-surface rounded-2xl p-6 border border-outline-variant/30 ambient-shadow ambient-shadow-hover transition-all">
+            <div class="flex text-secondary mb-3">
+                ${'<span class="material-symbols-outlined filled-icon">star</span>'.repeat(r.stars || 5)}
+            </div>
+            <p class="font-body-md text-on-surface mb-4 italic">"${r.text}"</p>
+            <div class="flex items-center gap-3 pt-3 border-t border-outline-variant/30">
+                <div class="w-9 h-9 rounded-full bg-primary-container flex items-center justify-center text-primary font-bold text-sm">${r.name[0]}</div>
+                <div><p class="font-label-sm text-label-sm text-on-surface">${r.name}${r.location ? ', '+r.location : ''}</p>
+                <p class="text-[11px] text-on-surface-variant">${r.source || 'Verified Customer'}</p></div>
+            </div>
+        </div>`).join('');
+});
+</script>

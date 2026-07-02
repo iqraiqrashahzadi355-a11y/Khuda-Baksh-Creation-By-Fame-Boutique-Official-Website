@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Dashboard | Khuda Baksh Creation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary": "#5e604d",
+                        "secondary-fixed": "#ffe088",
+                        "on-surface": "#1c1b1b",
+                        "outline": "#7f7576",
+                        "secondary-container": "#fed65b",
+                        "secondary": "#735c00", // Gold accent base
+                        "surface-container-low": "#f6f3f2",
+                        "background": "#fcf9f8",
+                        "on-secondary-fixed": "#241a00",
+                        "tertiary-fixed": "#e4e4cc",
+                        "surface-variant": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#1b1d0e",
+                        "primary-container": "#f5e6e8",
+                        "primary-fixed": "#eedfe1",
+                        "primary": "#665c5e",
+                        "tertiary-container": "#ebebd2",
+                        "on-primary-fixed": "#211a1b",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#dcd9d9",
+                        "inverse-on-surface": "#f3f0ef",
+                        "error": "#ba1a1a",
+                        "on-background": "#1c1b1b",
+                        "surface-container-high": "#eae7e7",
+                        "on-surface-variant": "#4d4546",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#665c5e",
+                        "on-tertiary-container": "#696a56",
+                        "surface-container-highest": "#e5e2e1",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#313030",
+                        "surface-bright": "#fcf9f8",
+                        "on-secondary-container": "#745c00",
+                        "on-primary-container": "#716668",
+                        "tertiary-fixed-dim": "#c8c8b0",
+                        "primary-fixed-dim": "#d1c3c5",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-tertiary-fixed-variant": "#474836",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#d1c3c5",
+                        "outline-variant": "#d0c3c5",
+                        "surface-container": "#f0eded",
+                        "on-primary-fixed-variant": "#4e4446",
+                        "surface": "#fcf9f8",
+                        "admin-navy": "#0f172a",
+                        "gold-accent": "#D4AF37"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "stack-md": "24px",
+                        "margin-desktop": "80px",
+                        "stack-sm": "8px",
+                        "margin-mobile": "20px",
+                        "container-max": "1280px",
+                        "stack-lg": "48px",
+                        "gutter": "24px"
+                    },
+                    fontFamily: {
+                        "headline-sm": ["Playfair Display"],
+                        "body-lg": ["Montserrat"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "label-sm": ["Montserrat"],
+                        "body-md": ["Montserrat"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Montserrat', sans-serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav {
+            background-color: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #D4AF37;
+            color: #D4AF37;
+        }
+        .sidebar-transition { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-[#f8fafc] text-on-surface overflow-x-hidden">
+<!-- Login Overlay -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-admin-navy" id="login-gate">
+<div class="w-full max-w-md p-stack-lg bg-white rounded-xl shadow-2xl mx-margin-mobile">
+<div class="text-center mb-stack-lg">
+<h1 class="font-headline-md text-headline-md text-admin-navy mb-2">Fame Boutique</h1>
+<p class="font-body-md text-on-surface-variant">Admin Access Only</p>
+</div>
+<form class="space-y-4" id="login-form">
+<div>
+<label class="block font-label-sm text-label-sm text-outline mb-1 uppercase">Username</label>
+<input class="w-full px-4 py-3 border border-outline-variant rounded-lg focus:ring-2 focus:ring-gold-accent outline-none" id="username" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-outline mb-1 uppercase">Password</label>
+<input class="w-full px-4 py-3 border border-outline-variant rounded-lg focus:ring-2 focus:ring-gold-accent outline-none" id="password" required="" type="password"/>
+</div>
+<button class="w-full bg-gold-accent text-white py-4 rounded-lg font-bold tracking-widest uppercase hover:bg-opacity-90 transition-all shadow-lg" type="submit">Login to Portal</button>
+<p class="text-error text-center font-label-sm hidden" id="login-error">Invalid credentials. Please try again.</p>
+</form>
+</div>
+</div>
+<!-- Dashboard Layout -->
+<div class="hidden min-h-screen flex" id="dashboard-ui">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-admin-navy text-white flex-shrink-0 flex flex-col sidebar-transition sticky top-0 h-screen overflow-y-auto">
+<div class="p-8 border-b border-white/10 flex items-center gap-3">
+<div class="w-8 h-8 bg-gold-accent rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm">auto_awesome</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm tracking-tight text-gold-accent">Fame Portal</h2>
+</div>
+<nav class="flex-1 py-6">
+<ul class="space-y-1" id="main-nav">
+<li><a class="flex items-center px-8 py-4 gap-4 active-nav hover:bg-white/5 transition-all" data-section="dashboard" href="#"><span class="material-symbols-outlined">dashboard</span> <span class="font-label-sm">Dashboard</span></a></li>
+<li><a class="flex items-center px-8 py-4 gap-4 text-white/70 hover:bg-white/5 hover:text-white transition-all" data-section="products" href="#"><span class="material-symbols-outlined">style</span> <span class="font-label-sm">Products</span></a></li>
+<li><a class="flex items-center px-8 py-4 gap-4 text-white/70 hover:bg-white/5 hover:text-white transition-all" data-section="orders" href="#"><span class="material-symbols-outlined">shopping_cart</span> <span class="font-label-sm">Orders</span></a></li>
+<li><a class="flex items-center px-8 py-4 gap-4 text-white/70 hover:bg-white/5 hover:text-white transition-all" data-section="testimonials" href="#"><span class="material-symbols-outlined">format_quote</span> <span class="font-label-sm">Testimonials</span></a></li>
+<li><a class="flex items-center px-8 py-4 gap-4 text-white/70 hover:bg-white/5 hover:text-white transition-all" data-section="gallery" href="#"><span class="material-symbols-outlined">collections</span> <span class="font-label-sm">Gallery</span></a></li>
+<li><a class="flex items-center px-8 py-4 gap-4 text-white/70 hover:bg-white/5 hover:text-white transition-all" data-section="inquiries" href="#"><span class="material-symbols-outlined">chat</span> <span class="font-label-sm">Inquiries</span></a></li>
+<li><a class="flex items-center px-8 py-4 gap-4 text-white/70 hover:bg-white/5 hover:text-white transition-all" data-section="settings" href="#"><span class="material-symbols-outlined">settings</span> <span class="font-label-sm">Settings</span></a></li>
+</ul>
+</nav>
+<div class="p-6 border-t border-white/10">
+<button class="flex items-center w-full px-4 py-3 gap-3 text-error bg-error/10 rounded-lg hover:bg-error/20 transition-all font-label-sm" id="logout-btn">
+<span class="material-symbols-outlined">logout</span> Logout
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto h-screen relative scroll-smooth">
+<!-- Header -->
+<header class="sticky top-0 z-40 bg-white border-b border-outline-variant/30 px-margin-desktop py-6 flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-on-surface" id="current-section-title">Dashboard</h3>
+<div class="flex items-center gap-6">
+<div class="text-right hidden md:block">
+<p class="font-label-sm text-on-surface font-bold">Khuda Baksh</p>
+<p class="text-[10px] text-outline uppercase tracking-widest">Store Admin</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a sophisticated South Asian business woman in elegant white ethnic wear, minimalist photography style, warm high-end lighting, cream background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpIiOacOGui17t86oa-16gU7u6HsM_idhc37euBIROkVhw1OlMetbT0vDk8zpeR4nasuj3PeYHSw9349L-QrKtb6fu_IH-qnZOT-3tt0dhaOpsjQb3plbmRcLHM5fxeV8KE7WjJ-ZGE4s8sKLxh8rKZeXCI7Xuv9ql10YYn-Tef5wAi7qDthGmPlMj72lhmSts0mMEaMwda33RgemmUFJiX9VQ7K9e6Azwc2_CG2tHpPiCmiGpTFgJ_37ztep0-gT_ZbcP1bkCCLeE"/>
+</div>
+</div>
+</header>
+<!-- Dynamic Section Container -->
+<div class="p-margin-desktop space-y-stack-lg max-w-7xl" id="content-canvas">
+<!-- DASHBOARD SECTION -->
+<section class="space-y-stack-lg" id="section-dashboard">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Stats -->
+<div class="bg-white p-6 rounded-xl shadow-sm border border-outline-variant/20 flex items-center justify-between">
+<div>
+<p class="text-outline font-label-sm uppercase mb-1">Total Products</p>
+<h4 class="font-headline-md text-headline-md" id="stat-products">124</h4>
+</div>
+<div class="bg-secondary-container/20 text-secondary p-3 rounded-lg"><span class="material-symbols-outlined">inventory_2</span></div>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-outline-variant/20 flex items-center justify-between">
+<div>
+<p class="text-outline font-label-sm uppercase mb-1">Orders Today</p>
+<h4 class="font-headline-md text-headline-md" id="stat-orders">18</h4>
+</div>
+<div class="bg-green-100 text-green-700 p-3 rounded-lg"><span class="material-symbols-outlined">trending_up</span></div>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-outline-variant/20 flex items-center justify-between">
+<div>
+<p class="text-outline font-label-sm uppercase mb-1">Total Reviews</p>
+<h4 class="font-headline-md text-headline-md" id="stat-reviews">56</h4>
+</div>
+<div class="bg-primary-container/30 text-primary p-3 rounded-lg"><span class="material-symbols-outlined">star</span></div>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-sm border border-outline-variant/20 flex items-center justify-between">
+<div>
+<p class="text-outline font-label-sm uppercase mb-1">Store Rating</p>
+<h4 class="font-headline-md text-headline-md">4.9</h4>
+</div>
+<div class="bg-amber-100 text-amber-600 p-3 rounded-lg"><span class="material-symbols-outlined">verified</span></div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Recent Activity -->
+<div class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-outline-variant/20 overflow-hidden">
+<div class="p-6 border-b border-outline-variant/20 flex justify-between items-center">
+<h5 class="font-bold text-on-surface">Recent WhatsApp Orders</h5>
+<button class="text-gold-accent font-label-sm uppercase hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-md">
+<thead class="bg-surface-container-low text-outline uppercase text-[11px] tracking-wider">
+<tr>
+<th class="px-6 py-4">Customer</th>
+<th class="px-6 py-4">Items</th>
+<th class="px-6 py-4">Total</th>
+<th class="px-6 py-4">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10" id="recent-orders-table">
+<!-- Dynamic -->
+</tbody>
+</table>
+</div>
+</div>
+<!-- Quick Actions -->
+<div class="space-y-gutter">
+<div class="bg-admin-navy text-white p-6 rounded-xl shadow-lg relative overflow-hidden group">
+
+<div class="relative z-10">
+<h5 class="font-playfair text-headline-sm mb-4">Quick Actions</h5>
+<div class="space-y-3">
+<button class="w-full bg-gold-accent text-white py-3 px-4 rounded-lg flex items-center gap-3 font-label-sm hover:scale-[1.02] transition-transform shadow-md" onclick="switchSection('products', true)">
+<span class="material-symbols-outlined">add_circle</span> Add New Product
+                                        </button>
+<button class="w-full bg-white/10 text-white py-3 px-4 rounded-lg border border-white/20 flex items-center gap-3 font-label-sm hover:bg-white/20 transition-all" onclick="switchSection('orders')">
+<span class="material-symbols-outlined">edit_square</span> Log WhatsApp Sale
+                                        </button>
+<button class="w-full bg-white/10 text-white py-3 px-4 rounded-lg border border-white/20 flex items-center gap-3 font-label-sm hover:bg-white/20 transition-all" onclick="switchSection('gallery')">
+<span class="material-symbols-outlined">upload</span> Upload to Gallery
+                                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PRODUCTS SECTION -->
+<section class="hidden space-y-stack-md" id="section-products">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-xl shadow-sm border border-outline-variant/20">
+<div class="flex gap-4 w-full md:w-auto">
+<div class="relative flex-1 md:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 border border-outline-variant/30 rounded-lg outline-none focus:ring-1 focus:ring-gold-accent" placeholder="Search products..." type="text"/>
+</div>
+<select class="border border-outline-variant/30 rounded-lg py-2 px-4 outline-none">
+<option>All Categories</option>
+<option>Stitched</option>
+<option>Unstitched</option>
+<option>Bridal</option>
+</select>
+</div>
+<button class="bg-gold-accent text-white px-6 py-3 rounded-lg font-bold uppercase tracking-wider flex items-center gap-2 hover:shadow-lg transition-shadow" onclick="toggleSlideOver('product-form')">
+<span class="material-symbols-outlined">add</span> Add Product
+                        </button>
+</div>
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant/20 overflow-hidden">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low text-outline uppercase text-[11px] tracking-wider">
+<tr>
+<th class="px-6 py-4">Image</th>
+<th class="px-6 py-4">Product Name</th>
+<th class="px-6 py-4">Category</th>
+<th class="px-6 py-4">Price</th>
+<th class="px-6 py-4">Badge</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10" id="products-master-table">
+<!-- Dynamic rows -->
+</tbody>
+</table>
+</div>
+</section>
+<!-- ORDERS SECTION -->
+<section class="hidden space-y-stack-md" id="section-orders">
+<div class="flex justify-between items-center">
+<div class="flex gap-2">
+<button class="bg-white px-4 py-2 rounded-lg border border-outline-variant/30 font-label-sm active-nav">All</button>
+<button class="bg-white px-4 py-2 rounded-lg border border-outline-variant/30 font-label-sm">Pending</button>
+<button class="bg-white px-4 py-2 rounded-lg border border-outline-variant/30 font-label-sm">Confirmed</button>
+</div>
+<button class="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-outline-variant/30 font-label-sm hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-sm">download</span> Export CSV
+                        </button>
+</div>
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant/20 overflow-hidden">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low text-outline uppercase text-[11px] tracking-wider">
+<tr>
+<th class="px-6 py-4">Order ID</th>
+<th class="px-6 py-4">Customer</th>
+<th class="px-6 py-4">WhatsApp No</th>
+<th class="px-6 py-4">Amount</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10" id="orders-master-table">
+<!-- Dynamic rows -->
+</tbody>
+</table>
+</div>
+</section>
+<!-- SETTINGS SECTION -->
+<section class="hidden" id="section-settings">
+<div class="max-w-3xl bg-white p-margin-desktop rounded-2xl shadow-sm border border-outline-variant/20">
+<h4 class="font-playfair text-headline-md mb-stack-lg">Business Configuration</h4>
+<form class="space-y-6" id="settings-form">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div>
+<label class="block font-label-sm text-outline uppercase mb-2">Boutique Name</label>
+<input class="w-full p-3 border border-outline-variant/30 rounded-lg" name="bizName" type="text" value="Khuda Baksh Creation"/>
+</div>
+<div>
+<label class="block font-label-sm text-outline uppercase mb-2">WhatsApp Contact</label>
+<input class="w-full p-3 border border-outline-variant/30 rounded-lg" name="bizPhone" type="text" value="+92 3XX XXXXXXX"/>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-outline uppercase mb-2">Store Address</label>
+<textarea class="w-full p-3 border border-outline-variant/30 rounded-lg" name="bizAddress" rows="3">Fame Boutique, Heritage Mall, Multan, Pakistan</textarea>
+</div>
+<div class="pt-6 border-t border-outline-variant/20">
+<h5 class="font-bold mb-4">Admin Security</h5>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div>
+<label class="block font-label-sm text-outline uppercase mb-2">Current Password</label>
+<input class="w-full p-3 border border-outline-variant/30 rounded-lg" type="password"/>
+</div>
+<div>
+<label class="block font-label-sm text-outline uppercase mb-2">New Password</label>
+<input class="w-full p-3 border border-outline-variant/30 rounded-lg" type="password"/>
+</div>
+</div>
+</div>
+<div class="flex justify-end pt-8">
+<button class="bg-gold-accent text-white px-12 py-4 rounded-lg font-bold tracking-widest uppercase shadow-lg hover:translate-y-[-2px] transition-all" type="submit">Save Changes</button>
+</div>
+</form>
+</div>
+</section>
+<!-- PLACEHOLDERS FOR OTHER SECTIONS (Functionality is similar) -->
+<section class="hidden" id="section-testimonials">
+  <div class="flex justify-between items-center mb-6">
+    <h4 class="text-xl font-bold text-on-surface">Customer Reviews</h4>
+    <button onclick="openAddReview()" class="bg-gold-accent text-white px-5 py-2 rounded-lg text-sm font-bold hover:opacity-90 transition">+ Add Review</button>
+  </div>
+  <div id="reviews-list" class="grid gap-4"></div>
+
+  <!-- Add Review Modal -->
+  <div id="review-modal" class="hidden fixed inset-0 bg-black/50 z-[200] flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl p-8 w-full max-w-lg shadow-2xl">
+      <h5 class="text-lg font-bold mb-5">Add Customer Review</h5>
+      <div class="space-y-4">
+        <input id="r-name" placeholder="Customer Name" class="w-full p-3 border border-outline-variant/30 rounded-lg text-sm"/>
+        <input id="r-location" placeholder="Location (e.g. Multan)" class="w-full p-3 border border-outline-variant/30 rounded-lg text-sm"/>
+        <textarea id="r-text" placeholder="Review text..." rows="3" class="w-full p-3 border border-outline-variant/30 rounded-lg text-sm"></textarea>
+        <div class="flex gap-3">
+          <select id="r-stars" class="flex-1 p-3 border border-outline-variant/30 rounded-lg text-sm">
+            <option>5 ⭐⭐⭐⭐⭐</option><option>4 ⭐⭐⭐⭐</option><option>3 ⭐⭐⭐</option>
+          </select>
+          <select id="r-source" class="flex-1 p-3 border border-outline-variant/30 rounded-lg text-sm">
+            <option>Google Review</option><option>Verified Customer</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex gap-3 mt-6">
+        <button onclick="saveReview()" class="flex-1 bg-gold-accent text-white py-3 rounded-lg font-bold hover:opacity-90">Save Review</button>
+        <button onclick="document.getElementById('review-modal').classList.add('hidden')" class="flex-1 border border-outline-variant py-3 rounded-lg font-bold">Cancel</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="hidden" id="section-gallery">
+  <div class="flex justify-between items-center mb-6">
+    <h4 class="text-xl font-bold text-on-surface">Image Gallery Manager</h4>
+    <label class="bg-gold-accent text-white px-5 py-2 rounded-lg text-sm font-bold hover:opacity-90 transition cursor-pointer">
+      + Upload Image <input type="file" accept="image/*" class="hidden" onchange="uploadGalleryImage(this)"/>
+    </label>
+  </div>
+  <div class="mb-4 flex gap-2 flex-wrap">
+    <select id="gallery-cat-filter" onchange="renderGallery()" class="p-2 border border-outline-variant/30 rounded-lg text-sm">
+      <option value="all">All Categories</option>
+      <option value="stitched">Stitched</option><option value="unstitched">Unstitched</option>
+      <option value="fancy">Fancy</option><option value="casual">Casual</option><option value="bridal">Bridal</option>
+    </select>
+    <select id="upload-cat" class="p-2 border border-outline-variant/30 rounded-lg text-sm">
+      <option value="stitched">Stitched</option><option value="unstitched">Unstitched</option>
+      <option value="fancy">Fancy</option><option value="casual">Casual</option><option value="bridal">Bridal</option>
+    </select>
+    <span class="text-sm text-on-surface-variant self-center">← Category for upload</span>
+  </div>
+  <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+</section>
+<section class="hidden" id="section-inquiries">
+  <div class="flex justify-between items-center mb-6">
+    <h4 class="text-xl font-bold text-on-surface">Customer Inquiries</h4>
+    <button onclick="exportInquiries()" class="border border-outline-variant px-5 py-2 rounded-lg text-sm font-bold hover:bg-surface transition">Export CSV</button>
+  </div>
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm">
+      <thead><tr class="bg-surface">
+        <th class="p-3 text-left font-bold text-on-surface-variant">Date</th>
+        <th class="p-3 text-left font-bold text-on-surface-variant">Name</th>
+        <th class="p-3 text-left font-bold text-on-surface-variant">Phone</th>
+        <th class="p-3 text-left font-bold text-on-surface-variant">Message</th>
+        <th class="p-3 text-left font-bold text-on-surface-variant">Status</th>
+        <th class="p-3 text-left font-bold text-on-surface-variant">Actions</th>
+      </tr></thead>
+      <tbody id="inquiries-table"></tbody>
+    </table>
+    <p id="no-inquiries" class="text-center text-on-surface-variant py-12 hidden">No inquiries yet. They appear here when customers submit the contact form.</p>
+  </div>
+</section>
+</div>
+</main>
+</div>
+<!-- Product Slide-Over Form -->
+<div class="fixed inset-0 z-50 invisible transition-all" id="product-form-overlay">
+<div class="absolute inset-0 bg-black/40 opacity-0 transition-opacity" id="product-form-backdrop"></div>
+<div class="absolute right-0 top-0 bottom-0 w-full max-w-xl bg-white shadow-2xl translate-x-full transition-transform duration-500 overflow-y-auto" id="product-form-panel">
+<div class="p-8 border-b border-outline-variant/20 flex justify-between items-center">
+<h4 class="font-headline-sm text-headline-sm">New Collection Item</h4>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container" onclick="toggleSlideOver('product-form')"><span class="material-symbols-outlined">close</span></button>
+</div>
+<form class="p-8 space-y-6" id="add-product-form">
+<div>
+<label class="block font-label-sm text-outline uppercase mb-2">Product Images</label>
+<div class="border-2 border-dashed border-outline-variant/40 rounded-xl p-8 text-center hover:border-gold-accent transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-4xl text-outline/50 group-hover:text-gold-accent mb-2">upload_file</span>
+<p class="font-body-md text-on-surface-variant">Click to upload or drag and drop</p>
+<p class="text-[10px] text-outline uppercase mt-1">High-Res Studio Photos Preferred</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="col-span-2">
+<label class="block font-label-sm text-outline uppercase mb-1">Product Title</label>
+<input class="w-full p-3 border border-outline-variant/30 rounded-lg" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-outline uppercase mb-1">Category</label>
+<select class="w-full p-3 border border-outline-variant/30 rounded-lg">
+<option>Stitched</option>
+<option>Unstitched</option>
+<option>Bridal Wear</option>
+<option>Accessories</option>
+</select>
+</div>
+<div>
+<label class="block font-label-sm text-outline uppercase mb-1">Base Price (PKR)</label>
+<input class="w-full p-3 border border-outline-variant/30 rounded-lg" required="" type="number"/>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-outline uppercase mb-1">Collection Tag</label>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-primary-container text-primary rounded-full text-xs font-bold border border-primary/20">New Arrival</span>
+<span class="px-3 py-1 bg-surface-container text-outline rounded-full text-xs font-bold border border-outline-variant/20">Bestseller</span>
+</div>
+</div>
+<div class="pt-8">
+<button class="w-full bg-gold-accent text-white py-4 rounded-xl font-bold uppercase tracking-widest shadow-xl" type="submit">List Product to Catalog</button>
+</div>
+</form>
+</div>
+</div>
+<!-- JS Logic -->
+<script>
+        const LOGIN_CREDS = { user: 'admin', pass: 'fameboutique2024' };
+        const STATE_KEYS = ['kb_products', 'kb_reviews', 'kb_settings', 'kb_inquiries', 'kb_gallery', 'kb_orders'];
+
+        // Mock Initial Data
+        const defaultData = {
+            products: [
+                { id: 1, name: 'Zari Work Silk Suite', category: 'Stitched', price: '24,500', badge: 'New', img: 'placeholder' },
+                { id: 2, name: 'Handcrafted Organza', category: 'Unstitched', price: '18,200', badge: 'Bestseller', img: 'placeholder' },
+                { id: 3, name: 'Royal Velvet Lehnga', category: 'Bridal', price: '145,000', badge: 'Custom', img: 'placeholder' }
+            ],
+            orders: [
+                { id: 'KB-8821', customer: 'Ayesha Khan', phone: '+92 300 1234567', total: '24,500', status: 'Confirmed' },
+                { id: 'KB-8822', customer: 'Zainab Bibi', phone: '+92 312 9876543', total: '18,200', status: 'Pending' },
+                { id: 'KB-8823', customer: 'Mariam Ali', phone: '+92 345 5556667', total: '145,000', status: 'Shipped' }
+            ]
+        };
+
+        // Initialize Local Storage
+        function initStorage() {
+            if (!localStorage.getItem('kb_products')) localStorage.setItem('kb_products', JSON.stringify(defaultData.products));
+            if (!localStorage.getItem('kb_orders')) localStorage.setItem('kb_orders', JSON.stringify(defaultData.orders));
+        }
+
+        // Login Handler
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('password').value;
+            
+            if (u === LOGIN_CREDS.user && p === LOGIN_CREDS.pass) {
+                document.getElementById('login-gate').style.display = 'none';
+                document.getElementById('dashboard-ui').classList.remove('hidden');
+                initDashboard();
+            } else {
+                document.getElementById('login-error').classList.remove('hidden');
+            }
+        });
+
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            window.location.reload();
+        });
+
+        // Navigation
+        function switchSection(sectionId, autoOpenForm = false) {
+            const sections = ['dashboard', 'products', 'orders', 'testimonials', 'gallery', 'inquiries', 'settings'];
+            sections.forEach(s => {
+                document.getElementById(`section-${s}`).classList.add('hidden');
+            });
+            document.getElementById(`section-${sectionId}`).classList.remove('hidden');
+            
+            // Update Title
+            document.getElementById('current-section-title').textContent = sectionId.charAt(0).toUpperCase() + sectionId.slice(1);
+            
+            // Update Nav Active State
+            const navLinks = document.querySelectorAll('#main-nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav');
+                link.classList.add('text-white/70');
+                if (link.getAttribute('data-section') === sectionId) {
+                    link.classList.add('active-nav');
+                    link.classList.remove('text-white/70');
+                }
+            });
+
+            if(autoOpenForm && sectionId === 'products') {
+                setTimeout(() => toggleSlideOver('product-form'), 100);
+            }
+        }
+
+        document.querySelectorAll('#main-nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                switchSection(link.getAttribute('data-section'));
+            });
+        });
+
+        // Slide-over Controls
+        function toggleSlideOver(id) {
+            const overlay = document.getElementById(`${id}-overlay`);
+            const backdrop = document.getElementById(`${id}-backdrop`);
+            const panel = document.getElementById(`${id}-panel`);
+
+            if (overlay.classList.contains('invisible')) {
+                overlay.classList.remove('invisible');
+                setTimeout(() => {
+                    backdrop.classList.add('opacity-100');
+                    panel.classList.remove('translate-x-full');
+                }, 10);
+            } else {
+                backdrop.classList.remove('opacity-100');
+                panel.classList.add('translate-x-full');
+                setTimeout(() => {
+                    overlay.classList.add('invisible');
+                }, 500);
+            }
+        }
+
+        document.getElementById('product-form-backdrop').addEventListener('click', () => toggleSlideOver('product-form'));
+
+        // Dashboard Initial Render
+        function initDashboard() {
+            initStorage();
+            renderStats();
+            renderTables();
+        }
+
+        function renderStats() {
+            const prods = JSON.parse(localStorage.getItem('kb_products'));
+            const ords = JSON.parse(localStorage.getItem('kb_orders'));
+            document.getElementById('stat-products').textContent = prods.length;
+            document.getElementById('stat-orders').textContent = ords.length;
+        }
+
+        function renderTables() {
+            const prods = JSON.parse(localStorage.getItem('kb_products'));
+            const ords = JSON.parse(localStorage.getItem('kb_orders'));
+
+            // Products Table
+            const prodBody = document.getElementById('products-master-table');
+            prodBody.innerHTML = prods.map(p => `
+                <tr class="hover:bg-surface-container-low transition-colors">
+                    <td class="px-6 py-4">
+                        <div class="w-12 h-16 bg-surface-variant rounded overflow-hidden border border-outline-variant/30">
+                            <img src="placeholder" data-alt="A high-end editorial flat-lay photograph of luxury South Asian bridal wear featuring intricate gold zari and thread work on silk fabric, sophisticated soft lighting, premium fashion photography style." class="w-full h-full object-cover">
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 font-bold text-on-surface">${p.name}</td>
+                    <td class="px-6 py-4 text-on-surface-variant">${p.category}</td>
+                    <td class="px-6 py-4 font-mono">PKR ${p.price}</td>
+                    <td class="px-6 py-4">
+                        <span class="px-2 py-1 bg-secondary-container/30 text-secondary text-[10px] font-bold uppercase rounded border border-secondary/20">${p.badge}</span>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                        <button class="text-outline hover:text-gold-accent"><span class="material-symbols-outlined">edit</span></button>
+                        <button class="text-outline hover:text-error ml-2"><span class="material-symbols-outlined">delete</span></button>
+                    </td>
+                </tr>
+            `).join('');
+
+            // Orders Tables
+            const orderBody = document.getElementById('orders-master-table');
+            const recentOrderBody = document.getElementById('recent-orders-table');
+            
+            const ordersHtml = ords.map(o => `
+                <tr class="hover:bg-surface-container-low transition-colors">
+                    <td class="px-6 py-4 font-mono text-sm">${o.id}</td>
+                    <td class="px-6 py-4 font-bold">${o.customer}</td>
+                    <td class="px-6 py-4 text-on-surface-variant">${o.phone}</td>
+                    <td class="px-6 py-4 font-mono">PKR ${o.total}</td>
+                    <td class="px-6 py-4">
+                        <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase ${o.status === 'Confirmed' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}">
+                            ${o.status}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                        <button class="text-gold-accent hover:underline font-label-sm">Detail</button>
+                    </td>
+                </tr>
+            `).join('');
+
+            orderBody.innerHTML = ordersHtml;
+            recentOrderBody.innerHTML = ordersHtml;
+        }
+
+        // Form Submit
+        document.getElementById('add-product-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Logic to add to localStorage then re-render
+            toggleSlideOver('product-form');
+            // Simplified feedback
+            alert('Product listed successfully!');
+        });
+
+    </script>
+
+<script>
+// ── Auth ──────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('kb_logged_in') === '1') {
+        document.getElementById('login-gate').classList.add('hidden');
+        document.getElementById('dashboard-ui').classList.remove('hidden');
+        loadDashboard();
+    }
+    document.getElementById('password').addEventListener('keydown', e => { if(e.key==='Enter') checkLogin(); });
+});
+
+function checkLogin() {
+    const u = document.getElementById('username').value.trim();
+    const p = document.getElementById('password').value;
+    const savedPass = localStorage.getItem('kb_admin_pass') || 'fameboutique2024';
+    if (u === 'admin' && p === savedPass) {
+        localStorage.setItem('kb_logged_in','1');
+        document.getElementById('login-gate').classList.add('hidden');
+        document.getElementById('dashboard-ui').classList.remove('hidden');
+        loadDashboard();
+    } else {
+        const err = document.getElementById('login-error');
+        if(err) { err.classList.remove('hidden'); err.textContent = 'Invalid username or password'; }
+        else alert('Invalid credentials');
+    }
+}
+
+function logout() {
+    localStorage.removeItem('kb_logged_in');
+    location.reload();
+}
+
+// ── Navigation ────────────────────────────────────────────────────
+document.querySelectorAll('[data-section]').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        const sec = link.dataset.section;
+        document.querySelectorAll('[id^="section-"]').forEach(s => s.classList.add('hidden'));
+        document.getElementById('section-'+sec).classList.remove('hidden');
+        document.querySelectorAll('[data-section]').forEach(l => l.classList.remove('active-nav','text-white'));
+        link.classList.add('active-nav','text-white');
+        const title = document.getElementById('current-section-title');
+        if(title) title.textContent = link.querySelector('span:last-child').textContent;
+        if(sec==='dashboard') loadDashboard();
+        if(sec==='products') renderProducts();
+        if(sec==='orders') renderOrders();
+        if(sec==='testimonials') renderReviews();
+        if(sec==='gallery') renderGallery();
+        if(sec==='inquiries') renderInquiries();
+        if(sec==='settings') loadSettings();
+    });
+});
+
+// ── Toast ─────────────────────────────────────────────────────────
+function toast(msg, type='success') {
+    const t = document.createElement('div');
+    t.className = `fixed top-6 right-6 z-[999] px-6 py-3 rounded-xl text-white text-sm font-bold shadow-xl transition-all ${type==='success'?'bg-green-600':'bg-red-500'}`;
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(()=>t.remove(), 3000);
+}
+
+// ── Dashboard ────────────────────────────────────────────────────
+function loadDashboard() {
+    const products = JSON.parse(localStorage.getItem('kb_products')||'[]');
+    const orders = JSON.parse(localStorage.getItem('kb_orders')||'[]');
+    const reviews = JSON.parse(localStorage.getItem('kb_reviews')||'[]');
+    const inquiries = JSON.parse(localStorage.getItem('kb_inquiries')||'[]');
+    const el = id => document.getElementById(id);
+    if(el('stat-products')) el('stat-products').textContent = products.length || '75';
+    if(el('stat-orders')) el('stat-orders').textContent = orders.filter(o=>o.date===new Date().toDateString()).length || 0;
+    if(el('stat-reviews')) el('stat-reviews').textContent = reviews.length || 12;
+    if(el('stat-inquiries')) el('stat-inquiries').textContent = inquiries.filter(i=>i.status==='new').length || 0;
+    // recent orders
+    const tbody = el('recent-orders-body');
+    if(tbody) {
+        const last5 = orders.slice(-5).reverse();
+        tbody.innerHTML = last5.length ? last5.map(o=>`
+            <tr class="border-b border-outline-variant/20">
+                <td class="py-3 px-4 text-sm">#${o.id}</td>
+                <td class="py-3 px-4 text-sm">${o.customer}</td>
+                <td class="py-3 px-4 text-sm">${o.item}</td>
+                <td class="py-3 px-4 text-sm">Rs. ${o.price?.toLocaleString()}</td>
+                <td class="py-3 px-4"><span class="px-2 py-1 rounded-full text-xs font-bold ${statusColor(o.status)}">${o.status}</span></td>
+            </tr>`).join('')
+        : '<tr><td colspan="5" class="py-8 text-center text-on-surface-variant text-sm">No orders yet</td></tr>';
+    }
+}
+
+// ── Products ──────────────────────────────────────────────────────
+function renderProducts() {
+    const products = JSON.parse(localStorage.getItem('kb_products')||'[]');
+    const container = document.getElementById('products-table-body');
+    if(!container) return;
+    if(!products.length) { container.innerHTML='<tr><td colspan="6" class="py-10 text-center text-on-surface-variant">No custom products yet. Default collections are active.</td></tr>'; return; }
+    container.innerHTML = products.map((p,i)=>`
+        <tr class="border-b border-outline-variant/20 hover:bg-surface">
+            <td class="py-3 px-4"><img src="${p.image||''}" class="w-12 h-12 object-cover rounded-lg"/></td>
+            <td class="py-3 px-4 text-sm font-medium">${p.name}</td>
+            <td class="py-3 px-4 text-sm capitalize">${p.category}</td>
+            <td class="py-3 px-4 text-sm">Rs. ${p.price?.toLocaleString()}</td>
+            <td class="py-3 px-4 text-sm">${p.badge||'—'}</td>
+            <td class="py-3 px-4 flex gap-2">
+                <button onclick="deleteProduct(${i})" class="text-red-500 hover:text-red-700 text-xs font-bold px-3 py-1 border border-red-200 rounded-lg">Delete</button>
+            </td>
+        </tr>`).join('');
+}
+
+function openAddProduct() {
+    const modal = document.getElementById('product-modal');
+    if(modal) modal.classList.remove('hidden');
+}
+
+function saveProduct() {
+    const name = document.getElementById('p-name')?.value;
+    const cat = document.getElementById('p-cat')?.value;
+    const price = parseInt(document.getElementById('p-price')?.value);
+    const badge = document.getElementById('p-badge')?.value;
+    const wa = document.getElementById('p-wa')?.value;
+    const fileInput = document.getElementById('p-image');
+    if(!name||!cat||!price){ toast('Fill all required fields','error'); return; }
+    const products = JSON.parse(localStorage.getItem('kb_products')||'[]');
+    const save = (img) => {
+        products.push({id:Date.now(),name,category:cat,price,badge:badge!=='None'?badge:null,waMsg:wa,image:img});
+        localStorage.setItem('kb_products',JSON.stringify(products));
+        document.getElementById('product-modal')?.classList.add('hidden');
+        renderProducts(); loadDashboard();
+        toast('Product added!');
+    };
+    if(fileInput?.files[0]) {
+        const r = new FileReader();
+        r.onload = e => save(e.target.result);
+        r.readAsDataURL(fileInput.files[0]);
+    } else save('');
+}
+
+function deleteProduct(i) {
+    if(!confirm('Delete this product?')) return;
+    const p = JSON.parse(localStorage.getItem('kb_products')||'[]');
+    p.splice(i,1); localStorage.setItem('kb_products',JSON.stringify(p));
+    renderProducts(); toast('Deleted');
+}
+
+// ── Orders ────────────────────────────────────────────────────────
+function renderOrders() {
+    const orders = JSON.parse(localStorage.getItem('kb_orders')||'[]');
+    const tbody = document.getElementById('orders-tbody');
+    if(!tbody) return;
+    tbody.innerHTML = orders.length ? orders.slice().reverse().map((o,i)=>`
+        <tr class="border-b border-outline-variant/20 hover:bg-surface">
+            <td class="py-3 px-4 text-sm">#${o.id}</td>
+            <td class="py-3 px-4 text-sm">${o.customer}</td>
+            <td class="py-3 px-4 text-sm">${o.phone}</td>
+            <td class="py-3 px-4 text-sm">${o.item}</td>
+            <td class="py-3 px-4 text-sm">Rs. ${o.price?.toLocaleString()}</td>
+            <td class="py-3 px-4">
+                <select onchange="updateOrderStatus(${orders.length-1-i},this.value)" class="text-xs p-1 rounded-lg border ${statusColor(o.status)}">
+                    ${['Pending','Confirmed','Stitching','Ready','Delivered'].map(s=>`<option ${s===o.status?'selected':''}>${s}</option>`).join('')}
+                </select>
+            </td>
+            <td class="py-3 px-4 text-xs text-on-surface-variant">${o.date}</td>
+            <td class="py-3 px-4"><button onclick="deleteOrder(${orders.length-1-i})" class="text-red-500 text-xs hover:text-red-700">✕</button></td>
+        </tr>`).join('')
+    : '<tr><td colspan="8" class="py-10 text-center text-on-surface-variant text-sm">No orders logged yet</td></tr>';
+}
+
+function openAddOrder() {
+    const m = document.getElementById('order-modal');
+    if(m) m.classList.remove('hidden');
+}
+
+function saveOrder() {
+    const o = {
+        id: Date.now().toString().slice(-6),
+        customer: document.getElementById('o-customer')?.value,
+        phone: document.getElementById('o-phone')?.value,
+        item: document.getElementById('o-item')?.value,
+        price: parseInt(document.getElementById('o-price')?.value||0),
+        status: document.getElementById('o-status')?.value||'Pending',
+        date: new Date().toDateString()
+    };
+    if(!o.customer){ toast('Fill required fields','error'); return; }
+    const orders = JSON.parse(localStorage.getItem('kb_orders')||'[]');
+    orders.push(o); localStorage.setItem('kb_orders',JSON.stringify(orders));
+    document.getElementById('order-modal')?.classList.add('hidden');
+    renderOrders(); loadDashboard(); toast('Order saved!');
+}
+
+function updateOrderStatus(i, status) {
+    const orders = JSON.parse(localStorage.getItem('kb_orders')||'[]');
+    if(orders[i]) { orders[i].status = status; localStorage.setItem('kb_orders',JSON.stringify(orders)); toast('Status updated!'); }
+}
+
+function deleteOrder(i) {
+    if(!confirm('Delete this order?')) return;
+    const orders = JSON.parse(localStorage.getItem('kb_orders')||'[]');
+    orders.splice(i,1); localStorage.setItem('kb_orders',JSON.stringify(orders));
+    renderOrders(); toast('Deleted');
+}
+
+function exportOrders() {
+    const orders = JSON.parse(localStorage.getItem('kb_orders')||'[]');
+    if(!orders.length){ toast('No orders to export','error'); return; }
+    const csv = ['ID,Customer,Phone,Item,Price,Status,Date',...orders.map(o=>`${o.id},${o.customer},${o.phone},${o.item},${o.price},${o.status},${o.date}`)].join('\n');
+    const a = document.createElement('a'); a.href='data:text/csv,'+encodeURIComponent(csv); a.download='orders.csv'; a.click();
+}
+
+function statusColor(s) {
+    return {Pending:'bg-yellow-100 text-yellow-800',Confirmed:'bg-blue-100 text-blue-800',Stitching:'bg-purple-100 text-purple-800',Ready:'bg-green-100 text-green-800',Delivered:'bg-gray-100 text-gray-700'}[s]||'bg-gray-100 text-gray-600';
+}
+
+// ── Reviews ───────────────────────────────────────────────────────
+const DEFAULT_REVIEWS = [
+    {name:'Ayesha K.',location:'Multan',text:'Acha behavior or kamal Customer dealing or good stuff they have',stars:5,source:'Google Review'},
+    {name:'Sana M.',location:'Multan',text:'Vast variety of clothes in reasonable price!',stars:5,source:'Google Review'},
+    {name:'Rabia T.',location:'Multan',text:'Good for Dresses, Fancy and Casual Dresses',stars:5,source:'Google Review'},
+    {name:'Fatima N.',location:'Multan',text:'Best place for shopping.',stars:5,source:'Google Review'},
+    {name:'Maryam A.',location:'Multan',text:'Got my bridal dress made here. The embroidery work was exceptional and it was delivered on time!',stars:5,source:'Verified Customer'},
+    {name:'Hina Z.',location:'Multan',text:'Ordered 3 casual suits. All stitched perfectly with exact measurements.',stars:5,source:'Verified Customer'},
+    {name:'Nadia S.',location:'Lahore',text:'Very reasonable prices and the quality is amazing. Better than many branded stores!',stars:5,source:'Verified Customer'},
+    {name:'Amna R.',location:'Multan',text:'The fancy collection is stunning. Found my Eid outfit here. Love this boutique!',stars:5,source:'Verified Customer'},
+    {name:'Saira B.',location:'Multan',text:'Staff is very helpful and patient. Excellent service!',stars:5,source:'Verified Customer'},
+    {name:'Zara H.',location:'Bahawalpur',text:'Unstitched fabric selection is huge! Got beautiful lawn fabric at very good price.',stars:5,source:'Verified Customer'},
+    {name:'Maham K.',location:'Multan',text:'Had my friend's mehndi dress made here. Everyone was asking where I got it from!',stars:5,source:'Verified Customer'},
+    {name:'Aroha N.',location:'Multan',text:'Quick stitching turnaround. Gave measurements Saturday, picked up Tuesday. Great quality!',stars:5,source:'Verified Customer'},
+];
+
+function getReviews() {
+    const r = localStorage.getItem('kb_reviews');
+    return r ? JSON.parse(r) : DEFAULT_REVIEWS;
+}
+
+function renderReviews() {
+    const reviews = getReviews();
+    const container = document.getElementById('reviews-list');
+    if(!container) return;
+    container.innerHTML = reviews.map((r,i)=>`
+        <div class="bg-white p-5 rounded-xl border border-outline-variant/30 shadow-sm">
+            <div class="flex justify-between items-start">
+                <div>
+                    <div class="text-gold-accent text-sm mb-1">${'⭐'.repeat(r.stars)}</div>
+                    <p class="text-sm text-on-surface italic mb-2">"${r.text}"</p>
+                    <p class="text-xs font-bold text-on-surface-variant">— ${r.name}, ${r.location} · <span class="text-primary">${r.source}</span></p>
+                </div>
+                <button onclick="deleteReview(${i})" class="text-red-400 hover:text-red-600 text-lg ml-4">✕</button>
+            </div>
+        </div>`).join('');
+}
+
+function openAddReview() { document.getElementById('review-modal')?.classList.remove('hidden'); }
+
+function saveReview() {
+    const reviews = getReviews();
+    reviews.push({
+        name: document.getElementById('r-name')?.value||'Customer',
+        location: document.getElementById('r-location')?.value||'Multan',
+        text: document.getElementById('r-text')?.value||'',
+        stars: parseInt((document.getElementById('r-stars')?.value||'5')[0]),
+        source: document.getElementById('r-source')?.value||'Verified Customer'
+    });
+    localStorage.setItem('kb_reviews',JSON.stringify(reviews));
+    document.getElementById('review-modal')?.classList.add('hidden');
+    renderReviews(); toast('Review added!');
+}
+
+function deleteReview(i) {
+    if(!confirm('Delete this review?')) return;
+    const reviews = getReviews();
+    reviews.splice(i,1); localStorage.setItem('kb_reviews',JSON.stringify(reviews));
+    renderReviews(); toast('Deleted');
+}
+
+// ── Gallery ───────────────────────────────────────────────────────
+function uploadGalleryImage(input) {
+    const cat = document.getElementById('upload-cat')?.value || 'casual';
+    const file = input.files[0]; if(!file) return;
+    const r = new FileReader();
+    r.onload = e => {
+        const gallery = JSON.parse(localStorage.getItem('kb_gallery')||'[]');
+        gallery.push({src:e.target.result,category:cat,name:file.name,date:new Date().toDateString()});
+        localStorage.setItem('kb_gallery',JSON.stringify(gallery));
+        renderGallery(); toast('Image uploaded!');
+        input.value='';
+    };
+    r.readAsDataURL(file);
+}
+
+function renderGallery() {
+    const gallery = JSON.parse(localStorage.getItem('kb_gallery')||'[]');
+    const filter = document.getElementById('gallery-cat-filter')?.value||'all';
+    const filtered = filter==='all' ? gallery : gallery.filter(g=>g.category===filter);
+    const container = document.getElementById('gallery-grid');
+    if(!container) return;
+    container.innerHTML = filtered.length ? filtered.map((g,i)=>`
+        <div class="relative group rounded-xl overflow-hidden aspect-square shadow-sm">
+            <img src="${g.src}" class="w-full h-full object-cover"/>
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all flex flex-col items-center justify-center gap-2 p-2">
+                <span class="text-white text-xs capitalize font-bold">${g.category}</span>
+                <button onclick="deleteGalleryImage(${i})" class="bg-red-500 text-white text-xs px-3 py-1 rounded-lg">Delete</button>
+            </div>
+        </div>`).join('')
+    : '<p class="col-span-4 text-center text-on-surface-variant py-12 text-sm">No images uploaded yet. Upload images to manage your gallery.</p>';
+}
+
+function deleteGalleryImage(i) {
+    if(!confirm('Delete?')) return;
+    const g = JSON.parse(localStorage.getItem('kb_gallery')||'[]');
+    g.splice(i,1); localStorage.setItem('kb_gallery',JSON.stringify(g));
+    renderGallery(); toast('Deleted');
+}
+
+// ── Inquiries ─────────────────────────────────────────────────────
+function renderInquiries() {
+    const inq = JSON.parse(localStorage.getItem('kb_inquiries')||'[]');
+    const tbody = document.getElementById('inquiries-table');
+    const empty = document.getElementById('no-inquiries');
+    if(!tbody) return;
+    if(!inq.length){ tbody.innerHTML=''; if(empty) empty.classList.remove('hidden'); return; }
+    if(empty) empty.classList.add('hidden');
+    tbody.innerHTML = inq.slice().reverse().map((q,i)=>`
+        <tr class="border-b border-outline-variant/20 hover:bg-surface">
+            <td class="py-3 px-4 text-xs text-on-surface-variant">${q.date}</td>
+            <td class="py-3 px-4 text-sm font-medium">${q.name}</td>
+            <td class="py-3 px-4 text-sm">${q.phone||'—'}</td>
+            <td class="py-3 px-4 text-sm max-w-xs truncate">${q.message}</td>
+            <td class="py-3 px-4">
+                <span class="px-2 py-1 rounded-full text-xs font-bold ${q.status==='new'?'bg-blue-100 text-blue-700':q.status==='read'?'bg-gray-100 text-gray-600':'bg-green-100 text-green-700'}">${q.status}</span>
+            </td>
+            <td class="py-3 px-4 flex gap-2">
+                <button onclick="markInquiry(${inq.length-1-i},'read')" class="text-xs px-2 py-1 border rounded-lg hover:bg-surface">Read</button>
+                <button onclick="markInquiry(${inq.length-1-i},'replied')" class="text-xs px-2 py-1 bg-green-50 border border-green-200 rounded-lg hover:bg-green-100 text-green-700">Replied</button>
+                <button onclick="deleteInquiry(${inq.length-1-i})" class="text-red-400 hover:text-red-600 text-xs">✕</button>
+            </td>
+        </tr>`).join('');
+}
+
+function markInquiry(i, status) {
+    const inq = JSON.parse(localStorage.getItem('kb_inquiries')||'[]');
+    if(inq[i]) { inq[i].status=status; localStorage.setItem('kb_inquiries',JSON.stringify(inq)); renderInquiries(); toast(`Marked as ${status}`); }
+}
+function deleteInquiry(i) {
+    if(!confirm('Delete?')) return;
+    const inq = JSON.parse(localStorage.getItem('kb_inquiries')||'[]');
+    inq.splice(i,1); localStorage.setItem('kb_inquiries',JSON.stringify(inq));
+    renderInquiries(); toast('Deleted');
+}
+function exportInquiries() {
+    const inq = JSON.parse(localStorage.getItem('kb_inquiries')||'[]');
+    if(!inq.length){ toast('No inquiries','error'); return; }
+    const csv=['Date,Name,Phone,Message,Status',...inq.map(q=>`"${q.date}","${q.name}","${q.phone||''}","${q.message}","${q.status}"`)].join('\n');
+    const a=document.createElement('a'); a.href='data:text/csv,'+encodeURIComponent(csv); a.download='inquiries.csv'; a.click();
+}
+
+// ── Settings ──────────────────────────────────────────────────────
+function loadSettings() {
+    const s = JSON.parse(localStorage.getItem('kb_settings')||'{}');
+    const fields = ['s-name','s-phone','s-address','s-hours','s-instagram','s-facebook','s-tagline','s-about'];
+    const keys = ['businessName','phone','address','hours','instagram','facebook','tagline','about'];
+    fields.forEach((f,i) => { const el=document.getElementById(f); if(el) el.value=s[keys[i]]||''; });
+}
+
+function saveSettings() {
+    const fields = ['s-name','s-phone','s-address','s-hours','s-instagram','s-facebook','s-tagline','s-about'];
+    const keys = ['businessName','phone','address','hours','instagram','facebook','tagline','about'];
+    const s = {};
+    fields.forEach((f,i) => { const el=document.getElementById(f); if(el) s[keys[i]]=el.value; });
+    const newPass = document.getElementById('s-new-pass')?.value;
+    if(newPass) { localStorage.setItem('kb_admin_pass',newPass); toast('Password updated!'); }
+    localStorage.setItem('kb_settings',JSON.stringify(s));
+    toast('Settings saved!');
+}
+</script>
+
+</body></html>

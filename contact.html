@@ -366,3 +366,32 @@
         });
     </script>
 </body></html>
+<script>
+// Save inquiry to localStorage when form submitted
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('form') || document.getElementById('contact-form') || document.getElementById('inquiryForm');
+    if(form) {
+        form.addEventListener('submit', function(e) {
+            const name = form.querySelector('[name="name"], #name, #inquiry-name, input[placeholder*="Name"], input[placeholder*="name"]')?.value || '';
+            const phone = form.querySelector('[name="phone"], #phone, input[placeholder*="Phone"], input[placeholder*="phone"]')?.value || '';
+            const message = form.querySelector('[name="message"], #message, textarea')?.value || '';
+            if(name || message) {
+                const inq = JSON.parse(localStorage.getItem('kb_inquiries') || '[]');
+                inq.push({ name, phone, message, date: new Date().toLocaleString(), status: 'new' });
+                localStorage.setItem('kb_inquiries', JSON.stringify(inq));
+            }
+        });
+    }
+    // Also capture any WhatsApp button clicks as inquiries
+    document.querySelectorAll('a[href*="wa.me"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const inq = JSON.parse(localStorage.getItem('kb_inquiries') || '[]');
+            const existing = inq.find(i => i.source === 'whatsapp' && i.date === new Date().toDateString());
+            if(!existing) {
+                inq.push({ name: 'WhatsApp Visitor', phone: '', message: 'Clicked WhatsApp button', date: new Date().toLocaleString(), status: 'new', source: 'whatsapp' });
+                localStorage.setItem('kb_inquiries', JSON.stringify(inq));
+            }
+        });
+    });
+});
+</script>
