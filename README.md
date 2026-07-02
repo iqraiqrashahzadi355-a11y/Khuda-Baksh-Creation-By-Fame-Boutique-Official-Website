@@ -286,5 +286,5 @@ Upload zip → Extract to public_html/ → done ✅
 
 <div align="center">
 
-*It is builted for learning purpose All rights are Reserved*
+*All rights are Reserved*
 
