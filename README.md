@@ -21,6 +21,15 @@
 
 ---
 
+# Khuda Baksh Creation By Fame Boutique Official Website
+
+🌐 **Live Website:** https://iqraiqrashahzadi355-a11y.github.io/Khuda-Baksh-Creation-By-Fame-Boutique-Official-Website/
+
+## About
+Official website for Khuda Baksh Creation By Fame Boutique.
+
+---
+
 ## 🌟 About This Project
 
 A **fully functional, multi-page business website** for Khuda Baksh Creation By Fame Boutique — Multan's trusted women's clothing boutique with a **4.8⭐ Google Rating**. Built entirely with HTML, Tailwind CSS, and vanilla JavaScript. No framework, no backend, no database.
